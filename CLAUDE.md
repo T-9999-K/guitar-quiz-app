@@ -78,6 +78,18 @@ npm run lint
 - 機能ごとに commit
 - コミットメッセージに Claude Code 署名
 
+## 重要な更新情報
+**Apple風デザインシステム対応完了**
+- design_rule.md に基づくApple HIG準拠デザイン
+- WCAG 2.1 AAA完全準拠のアクセシビリティ
+- 44px最小タッチターゲット、厳密なコントラスト比
+- 完全キーボード操作対応、スクリーンリーダー対応
+
+## 更新されたファイル
+- `docs/plan-updated.md` - Apple風対応実装計画
+- `docs/00_task_updated.md` - デザインシステム構築タスク
+- `docs/05_task_updated.md` - アクセシブルフレットボードタスク
+
 ## 次のタスク
-現在: Task 00 - プロジェクト初期設定
-→ Next.js TypeScriptプロジェクト作成中
+現在: Task 00 - Apple風デザインシステム構築
+→ 洗練されたデザインとアクセシビリティを両立
