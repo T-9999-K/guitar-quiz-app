@@ -33,7 +33,7 @@ const SEMITONE_RATIO = Math.pow(2, 1/12);
 const BASE_FRETBOARD_SIZE = {
   width: 800,
   height: 300,
-  frets: 5,
+  frets: 5 as number,
   stringSpacing: 40, // 弦間隔
   fretSpacing: 120   // フレット間隔
 } as const;
