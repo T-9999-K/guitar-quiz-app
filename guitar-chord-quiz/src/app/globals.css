@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* アクセシビリティ配慮 */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* フォーカスリング統一 */
+  *:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Apple風プライマリボタン */
+  .btn-primary {
+    @apply bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl shadow-md;
+    @apply hover:bg-blue-600 hover:shadow-lg hover:scale-105;
+    @apply focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+    @apply active:scale-95;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+    @apply transition-all duration-200 ease-in-out;
+    @apply min-h-[44px]; /* WCAG準拠最小タッチターゲット */
+  }
+
+  /* Apple風セカンダリボタン */
+  .btn-secondary {
+    @apply bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl shadow-sm;
+    @apply border-2 border-blue-700;
+    @apply hover:bg-blue-50 hover:shadow-md hover:scale-105;
+    @apply focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+    @apply active:scale-95;
+    @apply transition-all duration-200 ease-in-out;
+    @apply min-h-[44px];
+  }
+
+  /* Apple風危険ボタン */
+  .btn-danger {
+    @apply bg-red-600 text-white font-semibold px-6 py-3 rounded-xl shadow-md;
+    @apply hover:bg-red-700 hover:shadow-lg hover:scale-105;
+    @apply focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
+    @apply active:scale-95;
+    @apply transition-all duration-200 ease-in-out;
+    @apply min-h-[44px];
+  }
+
+  /* Apple風カード */
+  .card {
+    @apply bg-white border border-gray-300 rounded-2xl shadow-sm p-6;
+    @apply hover:shadow-md hover:border-gray-400;
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  /* Apple風入力フィールド */
+  .input-field {
+    @apply bg-white border border-gray-300 rounded-lg px-4 py-3;
+    @apply focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20;
+    @apply placeholder-gray-500 text-gray-900;
+    @apply min-h-[48px];
+    @apply transition-all duration-150 ease-in-out;
+  }
+
+  .input-field:invalid {
+    @apply border-red-500 focus:ring-red-500 focus:ring-opacity-20;
+  }
+
+  /* アクセシビリティヘルパー */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* 上質なアニメーション */
+  .animate-success-gentle {
+    animation: success-flash 1s ease-out;
+  }
+
+  .animate-error-gentle {
+    animation: error-shake 0.6s ease-in-out;
+  }
+}
+
+/* アニメーション定義 */
+@keyframes success-flash {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(34, 197, 94, 0.1);
+  }
+}
+
+@keyframes error-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-3px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(3px);
+  }
+}
+
+/* ダークモード対応（将来用） */
+@media (prefers-color-scheme: dark) {
+  .card {
+    @apply bg-gray-800 border-gray-700 text-white;
+  }
+}

@@ -1,0 +1,3 @@
+project_name: guitar-chord-quiz
+language: typescript
+description: Guitar chord quiz web application with Apple-style design system
