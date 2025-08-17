@@ -35,13 +35,16 @@ Apple HIG 準拠の完全アクセシブルな SVG フレットボード描画�
  *   showFingers={true}
  *   onStringPlay={handleStringPlay}
  * />
+ * 
+ * // 基準レイアウト: sample/fretboard-design-sample.html
+ * // viewBox: 0 0 800 300, 弦名目盛り必須
  * ```
  */
 interface AccessibleFretboardProps {
   /** 表示するコードパターン */
   chordPattern: ChordPattern;
   /** フレットボードの向き */
-  orientation: 'horizontal' | 'vertical';
+  orientation: 'horizontal'; // 横向きのみ実装（sample/fretboard-design-sample.html基準）
   /** 指番号を表示するか */
   showFingers?: boolean;
   /** カポタストの位置（0は未使用） */

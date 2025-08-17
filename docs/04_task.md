@@ -39,9 +39,10 @@ export const getFretCoordinates = (
 // レスポンシブサイズ計算
 export const calculateFretboardSize = (
   screenWidth: number,
-  orientation: 'horizontal' | 'vertical'
+  orientation: 'horizontal' = 'horizontal' // 横向き固定（sample/fretboard-design-sample.html基準）
 ): { width: number; height: number; frets: number } => {
-  // 画面サイズに応じたフレットボードサイズ
+  // 画面サイズに応じたフレットボードサイズ（横向きのみ）
+  // 基準: viewBox="0 0 800 300"
 };
 
 // カポタスト対応

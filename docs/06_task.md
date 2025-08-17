@@ -41,7 +41,7 @@ export const ResponsiveFretboard: React.FC<{
   const isTablet = useMediaQuery('(max-width: 1024px)');
   
   // 画面サイズに応じた設定
-  const orientation = isMobile ? 'vertical' : 'horizontal';
+  const orientation = 'horizontal'; // 全デバイスで横向き統一（sample/fretboard-design-sample.html基準）
   const maxFrets = isMobile ? 5 : isTablet ? 8 : 12;
   
   return (
@@ -56,7 +56,7 @@ export const ResponsiveFretboard: React.FC<{
 ```
 
 ## レスポンシブ設定
-- **Mobile (~768px)**: 縦向き、5フレット表示
+- **Mobile (~768px)**: 横向き、5フレット表示
 - **Tablet (768px-1024px)**: 横向き、8フレット表示
 - **Desktop (1024px~)**: 横向き、12フレット表示
 

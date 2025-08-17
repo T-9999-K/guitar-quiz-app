@@ -251,7 +251,7 @@ export const Button: React.FC<ButtonProps> = ({
  */
 interface AccessibleFretboardProps {
   chordPattern: ChordPattern;
-  orientation: 'horizontal' | 'vertical';
+  orientation: 'horizontal'; // 横向きのみ実装
   showFingers?: boolean;
   onStringPlay?: (string: number, fret: number) => void;
 }

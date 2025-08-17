@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chord Dot Hover Fix Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Original problematic CSS */
+        .chord-dot-original {
+            transition: all 0.15s ease-in-out;
+        }
+        
+        .chord-dot-original:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Fixed CSS - Solution 1: Transform Origin */
+        .chord-dot-fix1 {
+            transition: all 0.15s ease-in-out;
+            transform-box: fill-box;
+            transform-origin: center center;
+        }
+        
+        .chord-dot-fix1:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Fixed CSS - Solution 2A: Stroke Width */
+        .chord-dot-fix2a {
+            transition: all 0.15s ease-in-out;
+            stroke-width: 3px;
+        }
+        
+        .chord-dot-fix2a:hover {
+            stroke-width: 5px;
+            stroke: #1D4ED8;
+        }
+        
+        /* Fixed CSS - Solution 2B: Filter Effects */
+        .chord-dot-fix2b {
+            transition: all 0.15s ease-in-out;
+            filter: drop-shadow(0 0 0 rgba(59, 130, 246, 0));
+        }
+        
+        .chord-dot-fix2b:hover {
+            filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.6));
+        }
+        
+        /* Fixed CSS - Solution 2D: Combined Effects (Recommended) */
+        .chord-dot-fix2d {
+            transition: all 0.15s ease-in-out;
+            stroke-width: 3px;
+            filter: drop-shadow(0 0 0 rgba(59, 130, 246, 0));
+        }
+        
+        .chord-dot-fix2d:hover,
+        .chord-dot-fix2d:focus {
+            stroke-width: 4px;
+            filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.5));
+            fill: #1E40AF;
+        }
+        
+        .chord-dot-fix2d:focus {
+            outline: 2px solid #1D4ED8;
+            outline-offset: 2px;
+        }
+        
+        /* Demo styling */
+        .demo-section {
+            @apply bg-white border border-gray-300 rounded-xl shadow-sm p-6 mb-6;
+        }
+        
+        .demo-svg {
+            @apply w-full h-auto border border-gray-200 rounded-lg bg-white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen p-4">
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Chord Dot Hover Fix Comparison</h1>
+            <p class="text-lg text-gray-600">Demonstrating different solutions for the transform scale positioning issue</p>
+        </header>
+
+        <!-- Original Problem -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">❌ Original Problem (Position Shift)</h2>
+            <p class="text-sm text-gray-600 mb-4">Hover over the blue circle - notice how it shifts position due to transform-origin issue</p>
+            <svg viewBox="0 0 400 150" class="demo-svg">
+                <rect x="0" y="0" width="400" height="150" fill="#FEFEFE"/>
+                <!-- Grid for reference -->
+                <defs>
+                    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                
+                <!-- Reference lines -->
+                <line x1="100" y1="30" x2="100" y2="120" stroke="#D1D5DB" stroke-width="2"/>
+                <line x1="50" y1="75" x2="350" y2="75" stroke="#6B7280" stroke-width="1"/>
+                
+                <!-- Problematic chord dot -->
+                <circle cx="200" cy="75" r="14" fill="#3B82F6" stroke="#FFFFFF" stroke-width="3" 
+                        class="chord-dot-original cursor-pointer" tabindex="0"/>
+                <text x="200" y="105" text-anchor="middle" class="fill-gray-700 text-sm">Original (shifts position)</text>
+            </svg>
+        </section>
+
+        <!-- Solution 1: Transform Origin Fix -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">✅ Solution 1: Transform Origin Fix</h2>
+            <p class="text-sm text-gray-600 mb-4">Using transform-box: fill-box and transform-origin: center</p>
+            <svg viewBox="0 0 400 150" class="demo-svg">
+                <rect x="0" y="0" width="400" height="150" fill="#FEFEFE"/>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                
+                <line x1="100" y1="30" x2="100" y2="120" stroke="#D1D5DB" stroke-width="2"/>
+                <line x1="50" y1="75" x2="350" y2="75" stroke="#6B7280" stroke-width="1"/>
+                
+                <circle cx="200" cy="75" r="14" fill="#3B82F6" stroke="#FFFFFF" stroke-width="3" 
+                        class="chord-dot-fix1 cursor-pointer" tabindex="0"/>
+                <text x="200" y="105" text-anchor="middle" class="fill-gray-700 text-sm">Transform Origin Fix</text>
+            </svg>
+        </section>
+
+        <!-- Solution 2A: Stroke Width -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">✅ Solution 2A: Stroke Width Change</h2>
+            <p class="text-sm text-gray-600 mb-4">Increasing stroke width on hover instead of scaling</p>
+            <svg viewBox="0 0 400 150" class="demo-svg">
+                <rect x="0" y="0" width="400" height="150" fill="#FEFEFE"/>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                
+                <line x1="100" y1="30" x2="100" y2="120" stroke="#D1D5DB" stroke-width="2"/>
+                <line x1="50" y1="75" x2="350" y2="75" stroke="#6B7280" stroke-width="1"/>
+                
+                <circle cx="200" cy="75" r="14" fill="#3B82F6" stroke="#FFFFFF" stroke-width="3" 
+                        class="chord-dot-fix2a cursor-pointer" tabindex="0"/>
+                <text x="200" y="105" text-anchor="middle" class="fill-gray-700 text-sm">Stroke Width Effect</text>
+            </svg>
+        </section>
+
+        <!-- Solution 2B: Filter Effects -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">✅ Solution 2B: Filter/Shadow Effects</h2>
+            <p class="text-sm text-gray-600 mb-4">Using drop-shadow filter for glow effect</p>
+            <svg viewBox="0 0 400 150" class="demo-svg">
+                <rect x="0" y="0" width="400" height="150" fill="#FEFEFE"/>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                
+                <line x1="100" y1="30" x2="100" y2="120" stroke="#D1D5DB" stroke-width="2"/>
+                <line x1="50" y1="75" x2="350" y2="75" stroke="#6B7280" stroke-width="1"/>
+                
+                <circle cx="200" cy="75" r="14" fill="#3B82F6" stroke="#FFFFFF" stroke-width="3" 
+                        class="chord-dot-fix2b cursor-pointer" tabindex="0"/>
+                <text x="200" y="105" text-anchor="middle" class="fill-gray-700 text-sm">Filter Effect</text>
+            </svg>
+        </section>
+
+        <!-- Solution 2D: Combined Effects (Recommended) -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">🏆 Solution 2D: Combined Effects (Recommended)</h2>
+            <p class="text-sm text-gray-600 mb-4">Stroke width + shadow + color change - following Apple HIG principles</p>
+            <svg viewBox="0 0 400 150" class="demo-svg">
+                <rect x="0" y="0" width="400" height="150" fill="#FEFEFE"/>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                
+                <line x1="100" y1="30" x2="100" y2="120" stroke="#D1D5DB" stroke-width="2"/>
+                <line x1="50" y1="75" x2="350" y2="75" stroke="#6B7280" stroke-width="1"/>
+                
+                <circle cx="200" cy="75" r="14" fill="#3B82F6" stroke="#FFFFFF" stroke-width="3" 
+                        class="chord-dot-fix2d cursor-pointer" tabindex="0"/>
+                <text x="200" y="105" text-anchor="middle" class="fill-gray-700 text-sm">Combined Effects (Recommended)</text>
+            </svg>
+        </section>
+
+        <!-- Technical Analysis -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">🔬 Technical Analysis</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Problem Root Cause</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start space-x-2">
+                            <span class="w-2 h-2 bg-red-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                            <span>SVG default transform-origin is (0,0), not element center</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="w-2 h-2 bg-red-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                            <span>transform: scale() without proper origin causes position drift</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="w-2 h-2 bg-red-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                            <span>Browser inconsistencies with SVG transform-origin support</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Recommended Solution Benefits</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start space-x-2">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                            <span>No position shifting - elements stay in place</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                            <span>Better browser compatibility</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                            <span>Follows Apple HIG interaction patterns</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                            <span>Maintains accessibility standards</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <h4 class="text-sm font-semibold text-blue-900 mb-2">Implementation Code (Recommended)</h4>
+                <pre class="text-xs text-blue-800 bg-blue-100 p-3 rounded overflow-x-auto"><code>.chord-dot {
+    transition: all 0.15s ease-in-out;
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 0 rgba(59, 130, 246, 0));
+}
+
+.chord-dot:hover,
+.chord-dot:focus {
+    stroke-width: 4px;
+    filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.5));
+    fill: #1E40AF;
+}
+
+.chord-dot:focus {
+    outline: 2px solid #1D4ED8;
+    outline-offset: 2px;
+}</code></pre>
+            </div>
+        </section>
+
+        <footer class="text-center text-sm text-gray-500 py-8">
+            <p>Hover Effect Analysis - Generated with Claude Code</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add keyboard navigation for demo
+        document.addEventListener('keydown', function(e) {
+            if (e.target.tagName === 'circle') {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    // Simulate click for demo purposes
+                    console.log('Circle activated:', e.target.className.baseVal);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
