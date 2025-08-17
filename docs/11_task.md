@@ -1,18 +1,152 @@
-# Task 11: メインページ・レイアウト実装
+# Task 11: インタラクティブ回答モード・メインページ実装
 
 ## 概要
-アプリケーションのメインページとレイアウトを実装
+インタラクティブ回答モード機能とアプリケーションのメインページを実装
 
 ## 実行内容
-1. ルートレイアウトの設定
-2. ホームページ（メニュー）の実装
-3. 難易度選択機能
-4. ナビゲーション・ヘッダー
+1. インタラクティブ回答モードコンポーネント実装
+2. ルートレイアウトの設定
+3. ホームページ（メニュー）の実装
+4. ゲームモード選択機能
+5. ナビゲーション・ヘッダー
 
 ## 作成・更新ファイル
-1. `src/app/layout.tsx`
-2. `src/app/page.tsx`
-3. `src/app/globals.css`
+1. `src/components/quiz/InteractiveAnswerMode.tsx` **（新規）**
+2. `src/app/layout.tsx`
+3. `src/app/page.tsx`
+4. `src/app/globals.css`
+5. `src/hooks/useInteractiveQuiz.ts` **（新規）**
+
+## インタラクティブ回答モード実装
+**作成ファイル: `src/components/quiz/InteractiveAnswerMode.tsx`**
+```typescript
+/**
+ * インタラクティブ回答モードコンポーネント
+ * sample/fretboard-design-sample.html のJavaScript機能を移植
+ */
+interface InteractiveAnswerModeProps {
+  chordPattern: ChordPattern;
+  onAnswer: (isCorrect: boolean, userPattern: Set<string>) => void;
+  onHint: () => void;
+}
+
+export const InteractiveAnswerMode: React.FC<InteractiveAnswerModeProps> = ({
+  chordPattern,
+  onAnswer,
+  onHint
+}) => {
+  const [userFrets, setUserFrets] = useState<Set<string>>(new Set());
+  const [showResult, setShowResult] = useState(false);
+  const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
+
+  // toggleFret関数の実装
+  const handleFretToggle = (string: number, fret: number) => {
+    const fretKey = `${string}-${fret}`;
+    const newUserFrets = new Set(userFrets);
+    
+    if (newUserFrets.has(fretKey)) {
+      newUserFrets.delete(fretKey);
+    } else {
+      newUserFrets.add(fretKey);
+    }
+    
+    setUserFrets(newUserFrets);
+  };
+
+  // checkAnswer関数の実装
+  const handleAnswerCheck = () => {
+    const correctPattern = new Set(chordPattern.frets
+      .map((fret, stringIndex) => fret !== null ? `${stringIndex + 1}-${fret}` : null)
+      .filter(Boolean) as string[]
+    );
+    
+    const isCorrect = userFrets.size === correctPattern.size && 
+                     Array.from(userFrets).every(fret => correctPattern.has(fret));
+    
+    setFeedback(isCorrect ? 'correct' : 'incorrect');
+    setShowResult(true);
+    onAnswer(isCorrect, userFrets);
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* 出題表示 */}
+      <div className="p-6 bg-purple-50 border border-purple-200 rounded-lg text-center">
+        <h3 className="text-3xl font-bold text-purple-900 mb-2">問題</h3>
+        <div className="text-5xl font-bold text-purple-600 mb-3">{chordPattern.name}</div>
+        <p className="text-lg text-purple-800 mb-4">フレットボード上に押弦位置を設定してください</p>
+      </div>
+
+      {/* インタラクティブフレットボード */}
+      <AccessibleFretboard
+        chordPattern={{ ...chordPattern, frets: Array(6).fill(null) }}
+        orientation="horizontal"
+        interactive={true}
+        onFretToggle={handleFretToggle}
+      />
+
+      {/* 操作ボタン */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Button variant="secondary" onClick={() => setUserFrets(new Set())}>
+          すべてクリア
+        </Button>
+        <Button variant="secondary" onClick={onHint}>
+          ヒントを表示
+        </Button>
+        <Button variant="primary" onClick={handleAnswerCheck} disabled={userFrets.size === 0}>
+          答え合わせ
+        </Button>
+        <Button variant="secondary" onClick={() => /* showCorrectAnswer logic */}>
+          正解を表示
+        </Button>
+      </div>
+
+      {/* 結果表示 */}
+      {showResult && (
+        <div className={`p-4 rounded-lg border ${
+          feedback === 'correct' 
+            ? 'bg-green-50 border-green-200' 
+            : 'bg-red-50 border-red-200'
+        }`}>
+          {/* フィードバック表示 */}
+        </div>
+      )}
+    </div>
+  );
+};
+```
+
+## カスタムフック実装
+**作成ファイル: `src/hooks/useInteractiveQuiz.ts`**
+```typescript
+/**
+ * インタラクティブクイズ状態管理フック
+ */
+export const useInteractiveQuiz = (difficulty: ChordDifficulty) => {
+  const [currentChord, setCurrentChord] = useState<ChordPattern | null>(null);
+  const [userPattern, setUserPattern] = useState<Set<string>>(new Set());
+  const [score, setScore] = useState(0);
+  const [hints, setHints] = useState<string[]>([]);
+
+  const generateHint = useCallback((chord: ChordPattern) => {
+    const hintOptions = [
+      `このコードは${chord.frets.filter(f => f !== null).length}本の弦を押弦します`,
+      `使用するフレットは1〜5フレットの範囲です`,
+      `このコードの種類は${chord.name.includes('m') ? 'マイナー' : 'メジャー'}コードです`
+    ];
+    return hintOptions[Math.floor(Math.random() * hintOptions.length)];
+  }, []);
+
+  return {
+    currentChord,
+    userPattern,
+    score,
+    hints,
+    generateHint,
+    // その他の制御関数
+  };
+};
+```
 
 ## ルートレイアウト実装
 `src/app/layout.tsx`

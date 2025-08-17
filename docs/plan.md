@@ -337,11 +337,13 @@ export const AccessibleFretboard: React.FC<AccessibleFretboardProps> = ({
 /**
  * Apple風洗練されたクイズゲームコンポーネント
  * 完全アクセシビリティ対応、美しいアニメーション
+ * インタラクティブ回答モード対応
  */
 export const AppleStyleQuizGame: React.FC<QuizGameProps> = ({ difficulty, onGameEnd }) => {
   // ゲーム状態管理
   const quizState = useQuizState(difficulty);
   const [feedbackType, setFeedbackType] = useState<'success' | 'error' | null>(null);
+  const [gameMode, setGameMode] = useState<'normal' | 'interactive'>('normal');
   
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

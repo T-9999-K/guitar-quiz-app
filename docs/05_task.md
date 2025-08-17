@@ -55,6 +55,10 @@ interface AccessibleFretboardProps {
   onStringPlay?: (string: number, fret: number) => void;
   /** フレット範囲（モバイル対応） */
   fretRange?: { start: number; end: number };
+  /** インタラクティブ回答モード対応 */
+  interactive?: boolean;
+  /** 押弦位置設定/解除のコールバック */
+  onFretToggle?: (string: number, fret: number) => void;
 }
 
 export const AccessibleFretboard: React.FC<AccessibleFretboardProps> = ({
@@ -65,6 +69,8 @@ export const AccessibleFretboard: React.FC<AccessibleFretboardProps> = ({
   className,
   onStringPlay,
   fretRange = { start: 0, end: 12 },
+  interactive = false,
+  onFretToggle,
 }) => {
   // キーボードナビゲーション状態
   const [focusedPosition, setFocusedPosition] = useState<{

@@ -86,6 +86,24 @@
                 transition: none;
             }
         }
+        
+        /* クリック可能エリアのホバー効果 */
+        .clickable-fret {
+            transition: all 0.15s ease-in-out;
+        }
+        
+        .clickable-fret:hover {
+            fill: rgba(59, 130, 246, 0.2);
+            stroke: #3B82F6;
+            stroke-width: 2px;
+        }
+        
+        .clickable-fret:focus {
+            fill: rgba(59, 130, 246, 0.3);
+            stroke: #1D4ED8;
+            stroke-width: 3px;
+            outline: none;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen p-4">
@@ -351,6 +369,655 @@
             </div>
         </section>
 
+        <!-- コード入力機能サンプル -->
+        <section class="mb-12">
+            <div class="card">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-2">コード入力機能</h2>
+                    <p class="text-sm text-gray-600">プルダウンメニューと入力フィールドによる答え入力</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- プルダウン方式 -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-gray-900">プルダウン選択</h3>
+                        <div class="space-y-3">
+                            <label for="chord-select" class="block text-sm font-medium text-gray-700">コードを選択してください</label>
+                            <select id="chord-select" class="block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">-- コードを選択 --</option>
+                                <option value="C">C (ド)</option>
+                                <option value="Dm">Dm (レ♭)</option>
+                                <option value="Em">Em (ミ♭)</option>
+                                <option value="F">F (ファ)</option>
+                                <option value="G">G (ソ)</option>
+                                <option value="Am">Am (ラ♭)</option>
+                                <option value="Bdim">Bdim (シ゜)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- 入力フィールド方式 -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-gray-900">直接入力</h3>
+                        <div class="space-y-3">
+                            <label for="chord-input" class="block text-sm font-medium text-gray-700">コード名を入力してください</label>
+                            <input type="text" id="chord-input" placeholder="例: C, Am, F#m7" 
+                                   class="block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <div id="suggestions" class="hidden mt-2 p-2 bg-gray-50 border rounded-lg">
+                                <p class="text-xs text-gray-600 mb-1">候補:</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <button class="px-2 py-1 text-xs bg-white border rounded hover:bg-blue-50">C</button>
+                                    <button class="px-2 py-1 text-xs bg-white border rounded hover:bg-blue-50">Cmaj7</button>
+                                    <button class="px-2 py-1 text-xs bg-white border rounded hover:bg-blue-50">Cm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex justify-center">
+                    <button class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+                        答えを確認
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 正解判定機能サンプル -->
+        <section class="mb-12">
+            <div class="card">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-2">正解判定機能</h2>
+                    <p class="text-sm text-gray-600">即座のフィードバック表示</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 正解時のフィードバック -->
+                    <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm font-bold">✓</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-green-900 mb-1">正解！</h3>
+                                <p class="text-sm text-green-800 mb-2">コード名: <span class="font-medium">C (Cメジャー)</span></p>
+                                <p class="text-xs text-green-700">構成音: C - E - G</p>
+                                <div class="mt-3 flex space-x-2">
+                                    <button class="px-3 py-1 text-xs bg-green-600 text-white rounded hover:bg-green-700">
+                                        音を聞く
+                                    </button>
+                                    <button class="px-3 py-1 text-xs bg-white border border-green-600 text-green-600 rounded hover:bg-green-50">
+                                        次の問題
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 不正解時のフィードバック -->
+                    <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm font-bold">×</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-red-900 mb-1">不正解</h3>
+                                <p class="text-sm text-red-800 mb-2">正解: <span class="font-medium">C (Cメジャー)</span></p>
+                                <p class="text-xs text-red-700">あなたの答え: Am</p>
+                                <div class="mt-3 flex space-x-2">
+                                    <button class="px-3 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">
+                                        解説を見る
+                                    </button>
+                                    <button class="px-3 py-1 text-xs bg-white border border-red-600 text-red-600 rounded hover:bg-red-50">
+                                        再挑戦
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 難易度選択サンプル -->
+        <section class="mb-12">
+            <div class="card">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-2">難易度選択</h2>
+                    <p class="text-sm text-gray-600">レベルに応じたコード練習</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- 初級 -->
+                    <div class="p-4 border-2 border-green-200 rounded-lg hover:border-green-300 cursor-pointer transition-colors">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-green-600 text-lg font-bold">初</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">初級</h3>
+                            <p class="text-sm text-gray-600 mb-3">基本コード（C, G, Am, F等）</p>
+                            <div class="text-xs text-gray-500 space-y-1">
+                                <div>• オープンコード中心</div>
+                                <div>• 押弦数: 1-3本</div>
+                                <div>• 問題数: 8問</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 中級 -->
+                    <div class="p-4 border-2 border-blue-200 rounded-lg hover:border-blue-300 cursor-pointer transition-colors">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-blue-600 text-lg font-bold">中</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">中級</h3>
+                            <p class="text-sm text-gray-600 mb-3">バレーコード（F, Bm等）</p>
+                            <div class="text-xs text-gray-500 space-y-1">
+                                <div>• バレーコード含む</div>
+                                <div>• 押弦数: 3-4本</div>
+                                <div>• 問題数: 12問</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 上級 -->
+                    <div class="p-4 border-2 border-purple-200 rounded-lg hover:border-purple-300 cursor-pointer transition-colors">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-purple-600 text-lg font-bold">上</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">上級</h3>
+                            <p class="text-sm text-gray-600 mb-3">複雑なコード（add9, sus4等）</p>
+                            <div class="text-xs text-gray-500 space-y-1">
+                                <div>• 応用コード</div>
+                                <div>• 押弦数: 4-6本</div>
+                                <div>• 問題数: 15問</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- スコア機能サンプル -->
+        <section class="mb-12">
+            <div class="card">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-2">スコア機能</h2>
+                    <p class="text-sm text-gray-600">連続正解数と正答率の記録</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 現在のセッション -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-gray-900">現在のセッション</h3>
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <div class="grid grid-cols-2 gap-4 text-center">
+                                <div>
+                                    <div class="text-2xl font-bold text-blue-600">7</div>
+                                    <div class="text-sm text-blue-800">連続正解</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-blue-600">85%</div>
+                                    <div class="text-sm text-blue-800">正答率</div>
+                                </div>
+                            </div>
+                            <div class="mt-3 pt-3 border-t border-blue-200">
+                                <div class="flex justify-between text-sm text-blue-700">
+                                    <span>正解: 17問</span>
+                                    <span>不正解: 3問</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 履歴統計 -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-gray-900">過去の記録</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <span class="text-sm font-medium text-gray-900">最高連続正解</span>
+                                <span class="text-sm font-bold text-green-600">12問</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <span class="text-sm font-medium text-gray-900">平均正答率</span>
+                                <span class="text-sm font-bold text-blue-600">78%</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <span class="text-sm font-medium text-gray-900">総問題数</span>
+                                <span class="text-sm font-bold text-gray-600">156問</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ヒント機能サンプル -->
+        <section class="mb-12">
+            <div class="card">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-2">ヒント機能</h2>
+                    <p class="text-sm text-gray-600">段階的なヒント表示でサポート</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <!-- ヒントレベル1 -->
+                    <div class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">1</span>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-semibold text-yellow-900 mb-1">ヒント 1: ルート音</h3>
+                                <p class="text-sm text-yellow-800">このコードのルート音は「C」です</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ヒントレベル2 -->
+                    <div class="p-4 bg-orange-50 border border-orange-200 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">2</span>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-semibold text-orange-900 mb-1">ヒント 2: コードタイプ</h3>
+                                <p class="text-sm text-orange-800">このコードは「メジャーコード」です</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ヒントレベル3 -->
+                    <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">3</span>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-semibold text-red-900 mb-1">ヒント 3: 押弦情報</h3>
+                                <p class="text-sm text-red-800">押弦する弦は2弦、4弦、5弦の3本です</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center space-x-3 mt-6">
+                        <button class="px-4 py-2 bg-yellow-600 text-white font-medium rounded-lg hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
+                            次のヒント
+                        </button>
+                        <button class="px-4 py-2 bg-gray-600 text-white font-medium rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                            ヒントを隠す
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 練習モードサンプル -->
+        <section class="mb-12">
+            <div class="card">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-2">練習モード</h2>
+                    <p class="text-sm text-gray-600">特定のコードファミリーに絞った練習</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- プリセット練習 -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-gray-900">プリセット練習</h3>
+                        <div class="space-y-2">
+                            <button class="w-full p-3 text-left border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors">
+                                <div class="font-medium text-gray-900">メジャーコードのみ</div>
+                                <div class="text-sm text-gray-600">C, D, E, F, G, A, B</div>
+                            </button>
+                            <button class="w-full p-3 text-left border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors">
+                                <div class="font-medium text-gray-900">マイナーコードのみ</div>
+                                <div class="text-sm text-gray-600">Am, Bm, Cm, Dm, Em, Fm, Gm</div>
+                            </button>
+                            <button class="w-full p-3 text-left border border-gray-300 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors">
+                                <div class="font-medium text-gray-900">7thコードのみ</div>
+                                <div class="text-sm text-gray-600">C7, D7, E7, F7, G7, A7, B7</div>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- カスタム練習セット -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-gray-900">カスタム練習セット</h3>
+                        <div class="p-4 border border-gray-300 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">練習したいコードを選択</label>
+                            <div class="grid grid-cols-3 gap-2 mb-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" checked>
+                                    <span class="text-sm">C</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" checked>
+                                    <span class="text-sm">Am</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                    <span class="text-sm">F</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" checked>
+                                    <span class="text-sm">G</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                    <span class="text-sm">Dm</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                    <span class="text-sm">Em</span>
+                                </label>
+                            </div>
+                            <button class="w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                カスタム練習を開始
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- カポタスト対応機能サンプル -->
+        <section class="mb-12">
+            <div class="card">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-2">カポタスト対応機能</h2>
+                    <p class="text-sm text-gray-600">カポ位置設定とコード表示切り替え</p>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- カポ位置設定 -->
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">カポ位置設定</h3>
+                            <div class="flex items-center space-x-3">
+                                <label for="capo-position" class="text-sm font-medium text-gray-700">カポ位置:</label>
+                                <select id="capo-position" class="px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="0">カポなし</option>
+                                    <option value="1">1フレット</option>
+                                    <option value="2">2フレット</option>
+                                    <option value="3">3フレット</option>
+                                    <option value="4">4フレット</option>
+                                    <option value="5">5フレット</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 表記切り替え -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-4 bg-white border border-gray-200 rounded-lg">
+                                <h4 class="font-semibold text-gray-900 mb-2">カポ位置での表記</h4>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-blue-600 mb-1">C</div>
+                                    <div class="text-sm text-gray-600">カポ3フレット時の運指</div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-4 bg-white border border-gray-200 rounded-lg">
+                                <h4 class="font-semibold text-gray-900 mb-2">実音での表記</h4>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-green-600 mb-1">E♭</div>
+                                    <div class="text-sm text-gray-600">実際に鳴る音程</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 flex justify-center">
+                            <button class="px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                                表記を切り替える
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- カポ使用時の注意事項 -->
+                    <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <div class="flex-shrink-0 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">i</span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-blue-900 mb-1">カポタスト使用時の注意</h4>
+                                <ul class="text-sm text-blue-800 space-y-1">
+                                    <li>• フレットボード上の押弦位置は相対的な位置で表示されます</li>
+                                    <li>• 実際の音程はカポ位置分高くなります</li>
+                                    <li>• 表記切り替えで運指とアクチュアル音程を確認できます</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- インタラクティブ回答モードサンプル -->
+        <section class="mb-12">
+            <div class="card">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-2">インタラクティブ回答モード</h2>
+                    <p class="text-sm text-gray-600">コード名出題→フレットボード操作→正解判定</p>
+                </div>
+                
+                <!-- 出題表示 -->
+                <div class="mb-6 p-6 bg-purple-50 border border-purple-200 rounded-lg text-center">
+                    <h3 class="text-3xl font-bold text-purple-900 mb-2">問題</h3>
+                    <div class="text-5xl font-bold text-purple-600 mb-3">Cメジャー</div>
+                    <p class="text-lg text-purple-800 mb-4">フレットボード上に押弦位置を設定してください</p>
+                    <div class="flex justify-center space-x-4">
+                        <div class="px-3 py-1 bg-purple-100 rounded-full text-sm text-purple-700">
+                            難易度: 初級
+                        </div>
+                        <div class="px-3 py-1 bg-purple-100 rounded-full text-sm text-purple-700">
+                            押弦数: 3本
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- インタラクティブフレットボード -->
+                <div class="mb-6">
+                    <svg viewBox="0 0 800 300" class="w-full h-auto border border-gray-200 rounded-lg bg-white" role="img" aria-label="インタラクティブ回答フレットボード">
+                        <!-- 背景 -->
+                        <rect x="0" y="0" width="800" height="300" fill="#FEFEFE"/>
+                        
+                        <!-- フレット線 -->
+                        <line x1="80" y1="40" x2="80" y2="260" stroke="#111827" stroke-width="4" class="fret-line"/>
+                        <line x1="200" y1="40" x2="200" y2="260" stroke="#D1D5DB" stroke-width="2" class="fret-line"/>
+                        <line x1="320" y1="40" x2="320" y2="260" stroke="#D1D5DB" stroke-width="2" class="fret-line"/>
+                        <line x1="440" y1="40" x2="440" y2="260" stroke="#D1D5DB" stroke-width="2" class="fret-line"/>
+                        <line x1="560" y1="40" x2="560" y2="260" stroke="#D1D5DB" stroke-width="2" class="fret-line"/>
+                        <line x1="680" y1="40" x2="680" y2="260" stroke="#D1D5DB" stroke-width="2" class="fret-line"/>
+                        
+                        <!-- 弦（上から1弦、下が6弦） -->
+                        <line x1="80" y1="60" x2="720" y2="60" stroke="#6B7280" stroke-width="1" class="string-line"/><!-- 1弦（高音E） -->
+                        <line x1="80" y1="100" x2="720" y2="100" stroke="#6B7280" stroke-width="1" class="string-line"/><!-- 2弦（B） -->
+                        <line x1="80" y1="140" x2="720" y2="140" stroke="#6B7280" stroke-width="1" class="string-line"/><!-- 3弦（G） -->
+                        <line x1="80" y1="180" x2="720" y2="180" stroke="#6B7280" stroke-width="1" class="string-line"/><!-- 4弦（D） -->
+                        <line x1="80" y1="220" x2="720" y2="220" stroke="#6B7280" stroke-width="1.5" class="string-line"/><!-- 5弦（A） -->
+                        <line x1="80" y1="260" x2="720" y2="260" stroke="#6B7280" stroke-width="1.5" class="string-line"/><!-- 6弦（低音E） -->
+                        
+                        <!-- ポジションマーク -->
+                        <circle cx="320" cy="160" r="4" fill="#E5E7EB"/>
+                        <circle cx="560" cy="160" r="4" fill="#E5E7EB"/>
+                        
+                        <!-- 弦名目盛り（左側） -->
+                        <text x="30" y="65" text-anchor="middle" class="fill-gray-700 text-sm font-semibold">E</text><!-- 1弦 -->
+                        <text x="30" y="105" text-anchor="middle" class="fill-gray-700 text-sm font-semibold">B</text><!-- 2弦 -->
+                        <text x="30" y="145" text-anchor="middle" class="fill-gray-700 text-sm font-semibold">G</text><!-- 3弦 -->
+                        <text x="30" y="185" text-anchor="middle" class="fill-gray-700 text-sm font-semibold">D</text><!-- 4弦 -->
+                        <text x="30" y="225" text-anchor="middle" class="fill-gray-700 text-sm font-semibold">A</text><!-- 5弦 -->
+                        <text x="30" y="265" text-anchor="middle" class="fill-gray-700 text-sm font-semibold">E</text><!-- 6弦 -->
+                        
+                        <!-- 弦番号（左側、小さく） -->
+                        <text x="15" y="65" text-anchor="middle" class="fill-gray-500 text-xs">1</text><!-- 1弦 -->
+                        <text x="15" y="105" text-anchor="middle" class="fill-gray-500 text-xs">2</text><!-- 2弦 -->
+                        <text x="15" y="145" text-anchor="middle" class="fill-gray-500 text-xs">3</text><!-- 3弦 -->
+                        <text x="15" y="185" text-anchor="middle" class="fill-gray-500 text-xs">4</text><!-- 4弦 -->
+                        <text x="15" y="225" text-anchor="middle" class="fill-gray-500 text-xs">5</text><!-- 5弦 -->
+                        <text x="15" y="265" text-anchor="middle" class="fill-gray-500 text-xs">6</text><!-- 6弦 -->
+                        
+                        <!-- フレット番号（上部） -->
+                        <text x="140" y="30" text-anchor="middle" class="fill-gray-600 text-xs font-medium">1</text>
+                        <text x="260" y="30" text-anchor="middle" class="fill-gray-600 text-xs font-medium">2</text>
+                        <text x="380" y="30" text-anchor="middle" class="fill-gray-600 text-xs font-medium">3</text>
+                        <text x="500" y="30" text-anchor="middle" class="fill-gray-600 text-xs font-medium">4</text>
+                        <text x="620" y="30" text-anchor="middle" class="fill-gray-600 text-xs font-medium">5</text>
+                        
+                        <!-- クリック可能エリア（見えないボタン） -->
+                        <!-- 1弦のクリック可能エリア -->
+                        <g class="fret-clickable-area">
+                            <circle cx="140" cy="60" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(1, 1)" tabindex="0" role="button" aria-label="1弦1フレット"/>
+                            <circle cx="260" cy="60" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(1, 2)" tabindex="0" role="button" aria-label="1弦2フレット"/>
+                            <circle cx="380" cy="60" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(1, 3)" tabindex="0" role="button" aria-label="1弦3フレット"/>
+                            <circle cx="500" cy="60" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(1, 4)" tabindex="0" role="button" aria-label="1弦4フレット"/>
+                            <circle cx="620" cy="60" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(1, 5)" tabindex="0" role="button" aria-label="1弦5フレット"/>
+                        </g>
+                        
+                        <!-- 2弦のクリック可能エリア -->
+                        <g class="fret-clickable-area">
+                            <circle cx="140" cy="100" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(2, 1)" tabindex="0" role="button" aria-label="2弦1フレット"/>
+                            <circle cx="260" cy="100" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(2, 2)" tabindex="0" role="button" aria-label="2弦2フレット"/>
+                            <circle cx="380" cy="100" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(2, 3)" tabindex="0" role="button" aria-label="2弦3フレット"/>
+                            <circle cx="500" cy="100" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(2, 4)" tabindex="0" role="button" aria-label="2弦4フレット"/>
+                            <circle cx="620" cy="100" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(2, 5)" tabindex="0" role="button" aria-label="2弦5フレット"/>
+                        </g>
+                        
+                        <!-- 3弦のクリック可能エリア -->
+                        <g class="fret-clickable-area">
+                            <circle cx="140" cy="140" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(3, 1)" tabindex="0" role="button" aria-label="3弦1フレット"/>
+                            <circle cx="260" cy="140" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(3, 2)" tabindex="0" role="button" aria-label="3弦2フレット"/>
+                            <circle cx="380" cy="140" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(3, 3)" tabindex="0" role="button" aria-label="3弦3フレット"/>
+                            <circle cx="500" cy="140" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(3, 4)" tabindex="0" role="button" aria-label="3弦4フレット"/>
+                            <circle cx="620" cy="140" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(3, 5)" tabindex="0" role="button" aria-label="3弦5フレット"/>
+                        </g>
+                        
+                        <!-- 4弦のクリック可能エリア -->
+                        <g class="fret-clickable-area">
+                            <circle cx="140" cy="180" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(4, 1)" tabindex="0" role="button" aria-label="4弦1フレット"/>
+                            <circle cx="260" cy="180" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(4, 2)" tabindex="0" role="button" aria-label="4弦2フレット"/>
+                            <circle cx="380" cy="180" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(4, 3)" tabindex="0" role="button" aria-label="4弦3フレット"/>
+                            <circle cx="500" cy="180" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(4, 4)" tabindex="0" role="button" aria-label="4弦4フレット"/>
+                            <circle cx="620" cy="180" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(4, 5)" tabindex="0" role="button" aria-label="4弦5フレット"/>
+                        </g>
+                        
+                        <!-- 5弦のクリック可能エリア -->
+                        <g class="fret-clickable-area">
+                            <circle cx="140" cy="220" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(5, 1)" tabindex="0" role="button" aria-label="5弦1フレット"/>
+                            <circle cx="260" cy="220" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(5, 2)" tabindex="0" role="button" aria-label="5弦2フレット"/>
+                            <circle cx="380" cy="220" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(5, 3)" tabindex="0" role="button" aria-label="5弦3フレット"/>
+                            <circle cx="500" cy="220" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(5, 4)" tabindex="0" role="button" aria-label="5弦4フレット"/>
+                            <circle cx="620" cy="220" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(5, 5)" tabindex="0" role="button" aria-label="5弦5フレット"/>
+                        </g>
+                        
+                        <!-- 6弦のクリック可能エリア -->
+                        <g class="fret-clickable-area">
+                            <circle cx="140" cy="260" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(6, 1)" tabindex="0" role="button" aria-label="6弦1フレット"/>
+                            <circle cx="260" cy="260" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(6, 2)" tabindex="0" role="button" aria-label="6弦2フレット"/>
+                            <circle cx="380" cy="260" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(6, 3)" tabindex="0" role="button" aria-label="6弦3フレット"/>
+                            <circle cx="500" cy="260" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(6, 4)" tabindex="0" role="button" aria-label="6弦4フレット"/>
+                            <circle cx="620" cy="260" r="18" fill="transparent" stroke="none" class="clickable-fret cursor-pointer" 
+                                    onclick="toggleFret(6, 5)" tabindex="0" role="button" aria-label="6弦5フレット"/>
+                        </g>
+                        
+                        <!-- ユーザーが設定した押弦位置（動的に表示） -->
+                        <g id="user-frets">
+                            <!-- ここにユーザーの押弦位置が動的に追加される -->
+                        </g>
+                        
+                        <!-- 正解との差分表示（判定後） -->
+                        <g id="answer-feedback" class="hidden">
+                            <!-- 正解位置（緑）と不正解位置（赤）が表示される -->
+                        </g>
+                    </svg>
+                </div>
+                
+                <!-- 操作ボタン -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <button onclick="clearAllFrets()" class="px-4 py-2 bg-gray-600 text-white font-medium rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                        すべてクリア
+                    </button>
+                    <button onclick="showHint()" class="px-4 py-2 bg-yellow-600 text-white font-medium rounded-lg hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
+                        ヒントを表示
+                    </button>
+                    <button onclick="checkAnswer()" class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        答え合わせ
+                    </button>
+                    <button onclick="showCorrectAnswer()" class="px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                        正解を表示
+                    </button>
+                </div>
+                
+                <!-- 判定結果表示エリア -->
+                <div id="answer-result" class="hidden mb-6">
+                    <!-- 正解・不正解の結果がここに表示される -->
+                </div>
+                
+                <!-- 現在の設定状況 -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h3 class="text-sm font-semibold text-gray-900 mb-2">現在の設定</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <div class="text-xs text-gray-600 mb-1">設定済み押弦位置:</div>
+                            <div id="current-frets" class="text-sm text-gray-900 min-h-5">まだ設定されていません</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-600 mb-1">押弦数:</div>
+                            <div id="fret-count" class="text-sm text-gray-900">0 / 3</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- インタラクティブモードの説明 -->
+                <div class="mt-6 p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 w-5 h-5 bg-purple-500 rounded-full flex items-center justify-center">
+                            <span class="text-white text-xs font-bold">?</span>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-purple-900 mb-1">インタラクティブ回答モードの使い方</h4>
+                            <ul class="text-sm text-purple-800 space-y-1">
+                                <li>• フレットボード上の交点をクリックして押弦位置を設定</li>
+                                <li>• 設定した位置をもう一度クリックすると解除されます</li>
+                                <li>• 「答え合わせ」ボタンで正解・不正解を判定</li>
+                                <li>• 緑色：正解位置、赤色：間違った位置、白色：未設定の正解位置</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- フッター -->
         <footer class="text-center text-sm text-gray-500 py-8">
             <p>Guitar Chord Quiz - Apple風デザインシステム + WCAG 2.1 AAA準拠</p>
@@ -402,6 +1069,280 @@
         
         // フォーカス表示の強化（CSSで処理するためJavaScript処理を削除）
         // フォーカス時のスタイルはCSSの:focusセレクタで適用
+        
+        // インタラクティブ回答モードの機能
+        let userFrets = new Set(); // ユーザーが設定した押弦位置 (string-fret形式)
+        const correctAnswer = new Set(['2-1', '4-2', '5-3']); // Cメジャーの正解
+        
+        function toggleFret(string, fret) {
+            const fretKey = `${string}-${fret}`;
+            const userFretsGroup = document.getElementById('user-frets');
+            
+            if (userFrets.has(fretKey)) {
+                // 既に設定されている場合は削除
+                userFrets.delete(fretKey);
+                const existingDot = document.getElementById(`user-fret-${string}-${fret}`);
+                if (existingDot) {
+                    existingDot.remove();
+                }
+            } else {
+                // 新しく設定
+                userFrets.add(fretKey);
+                
+                // 押弦ドットを追加
+                const coordinates = getFretCoordinates(string, fret);
+                const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                dot.setAttribute('id', `user-fret-${string}-${fret}`);
+                dot.setAttribute('cx', coordinates.x);
+                dot.setAttribute('cy', coordinates.y);
+                dot.setAttribute('r', '14');
+                dot.setAttribute('fill', '#3B82F6');
+                dot.setAttribute('stroke', '#FFFFFF');
+                dot.setAttribute('stroke-width', '3');
+                dot.classList.add('chord-dot');
+                
+                userFretsGroup.appendChild(dot);
+            }
+            
+            updateCurrentFretsDisplay();
+            announceToScreenReader(`${string}弦 ${fret}フレット ${userFrets.has(fretKey) ? '設定' : '解除'}しました`);
+        }
+        
+        function getFretCoordinates(string, fret) {
+            const stringY = 60 + (string - 1) * 40; // 弦のY位置（1弦=60, 2弦=100, ... 6弦=260）
+            const fretX = 80 + fret * 120 - 60; // フレットのX位置（フレット間の中央）
+            return { x: fretX, y: stringY };
+        }
+        
+        function updateCurrentFretsDisplay() {
+            const currentFretsElement = document.getElementById('current-frets');
+            const fretCountElement = document.getElementById('fret-count');
+            
+            if (userFrets.size === 0) {
+                currentFretsElement.textContent = 'まだ設定されていません';
+            } else {
+                const fretsList = Array.from(userFrets)
+                    .map(fret => {
+                        const [string, fretNum] = fret.split('-');
+                        return `${string}弦${fretNum}F`;
+                    })
+                    .sort()
+                    .join(', ');
+                currentFretsElement.textContent = fretsList;
+            }
+            
+            fretCountElement.textContent = `${userFrets.size} / 3`;
+        }
+        
+        function clearAllFrets() {
+            userFrets.clear();
+            const userFretsGroup = document.getElementById('user-frets');
+            userFretsGroup.innerHTML = '';
+            
+            // 判定結果もクリア
+            const answerResult = document.getElementById('answer-result');
+            answerResult.classList.add('hidden');
+            
+            const answerFeedback = document.getElementById('answer-feedback');
+            answerFeedback.classList.add('hidden');
+            answerFeedback.innerHTML = '';
+            
+            updateCurrentFretsDisplay();
+            announceToScreenReader('すべての押弦位置をクリアしました');
+        }
+        
+        function showHint() {
+            const hints = [
+                'このコードは3本の弦を押弦します',
+                '使用するフレットは1〜3フレットの範囲です',
+                '2弦、4弦、5弦を使用します'
+            ];
+            
+            const randomHint = hints[Math.floor(Math.random() * hints.length)];
+            announceToScreenReader(`ヒント: ${randomHint}`);
+            
+            // 簡易的なアラート表示（実際の実装では専用のUI要素を使用）
+            alert(`ヒント: ${randomHint}`);
+        }
+        
+        function checkAnswer() {
+            const answerResultElement = document.getElementById('answer-result');
+            const answerFeedbackGroup = document.getElementById('answer-feedback');
+            
+            // 正解判定
+            const isCorrect = userFrets.size === correctAnswer.size && 
+                            Array.from(userFrets).every(fret => correctAnswer.has(fret));
+            
+            // 結果表示
+            answerResultElement.innerHTML = '';
+            answerResultElement.classList.remove('hidden');
+            
+            if (isCorrect) {
+                answerResultElement.innerHTML = `
+                    <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm font-bold">✓</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-green-900 mb-1">正解！</h3>
+                                <p class="text-sm text-green-800">Cメジャーコードを正しく設定できました！</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                announceToScreenReader('正解です！Cメジャーコードを正しく設定できました！');
+            } else {
+                // 差分を計算
+                const correctOnly = Array.from(correctAnswer).filter(fret => !userFrets.has(fret));
+                const incorrectOnly = Array.from(userFrets).filter(fret => !correctAnswer.has(fret));
+                
+                answerResultElement.innerHTML = `
+                    <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm font-bold">×</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-red-900 mb-1">不正解</h3>
+                                <p class="text-sm text-red-800 mb-2">もう一度確認してみてください</p>
+                                ${correctOnly.length > 0 ? `<p class="text-xs text-red-700">不足: ${correctOnly.map(f => {
+                                    const [s, fr] = f.split('-'); return `${s}弦${fr}F`;
+                                }).join(', ')}</p>` : ''}
+                                ${incorrectOnly.length > 0 ? `<p class="text-xs text-red-700">余分: ${incorrectOnly.map(f => {
+                                    const [s, fr] = f.split('-'); return `${s}弦${fr}F`;
+                                }).join(', ')}</p>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // 差分を視覚的に表示
+                showAnswerFeedback(correctOnly, incorrectOnly);
+                announceToScreenReader('不正解です。赤いマークが間違った位置、白いマークが正解の位置です。');
+            }
+        }
+        
+        function showAnswerFeedback(correctOnly, incorrectOnly) {
+            const answerFeedbackGroup = document.getElementById('answer-feedback');
+            answerFeedbackGroup.innerHTML = '';
+            answerFeedbackGroup.classList.remove('hidden');
+            
+            // 正解だが未設定の位置（白）
+            correctOnly.forEach(fret => {
+                const [string, fretNum] = fret.split('-');
+                const coordinates = getFretCoordinates(parseInt(string), parseInt(fretNum));
+                const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                dot.setAttribute('cx', coordinates.x);
+                dot.setAttribute('cy', coordinates.y);
+                dot.setAttribute('r', '14');
+                dot.setAttribute('fill', '#FFFFFF');
+                dot.setAttribute('stroke', '#10B981');
+                dot.setAttribute('stroke-width', '4');
+                dot.setAttribute('opacity', '0.8');
+                answerFeedbackGroup.appendChild(dot);
+            });
+            
+            // 間違った位置（赤の×マーク）
+            incorrectOnly.forEach(fret => {
+                const [string, fretNum] = fret.split('-');
+                const coordinates = getFretCoordinates(parseInt(string), parseInt(fretNum));
+                
+                // 赤い円
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', coordinates.x);
+                circle.setAttribute('cy', coordinates.y);
+                circle.setAttribute('r', '16');
+                circle.setAttribute('fill', '#EF4444');
+                circle.setAttribute('stroke', '#FFFFFF');
+                circle.setAttribute('stroke-width', '3');
+                circle.setAttribute('opacity', '0.9');
+                answerFeedbackGroup.appendChild(circle);
+                
+                // × マーク
+                const cross = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                cross.setAttribute('x', coordinates.x);
+                cross.setAttribute('y', coordinates.y + 5);
+                cross.setAttribute('text-anchor', 'middle');
+                cross.setAttribute('fill', '#FFFFFF');
+                cross.setAttribute('font-size', '16');
+                cross.setAttribute('font-weight', 'bold');
+                cross.textContent = '×';
+                answerFeedbackGroup.appendChild(cross);
+            });
+        }
+        
+        function showCorrectAnswer() {
+            const userFretsGroup = document.getElementById('user-frets');
+            const answerFeedbackGroup = document.getElementById('answer-feedback');
+            
+            // 既存の判定結果をクリア
+            const answerResult = document.getElementById('answer-result');
+            answerResult.classList.add('hidden');
+            answerFeedbackGroup.classList.remove('hidden');
+            answerFeedbackGroup.innerHTML = '';
+            
+            // 間違った位置を特定
+            const incorrectFrets = Array.from(userFrets).filter(fret => !correctAnswer.has(fret));
+            const missingFrets = Array.from(correctAnswer).filter(fret => !userFrets.has(fret));
+            
+            // 間違った位置の既存ドットを赤×マークに変更
+            incorrectFrets.forEach(fret => {
+                const [string, fretNum] = fret.split('-');
+                const existingDot = document.getElementById(`user-fret-${string}-${fretNum}`);
+                if (existingDot) {
+                    // 既存ドットを赤色に変更
+                    existingDot.setAttribute('fill', '#EF4444');
+                    existingDot.setAttribute('stroke', '#FFFFFF');
+                    existingDot.setAttribute('stroke-width', '3');
+                    
+                    // ×マークを追加
+                    const coordinates = getFretCoordinates(parseInt(string), parseInt(fretNum));
+                    const cross = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    cross.setAttribute('x', coordinates.x);
+                    cross.setAttribute('y', coordinates.y + 5);
+                    cross.setAttribute('text-anchor', 'middle');
+                    cross.setAttribute('fill', '#FFFFFF');
+                    cross.setAttribute('font-size', '16');
+                    cross.setAttribute('font-weight', 'bold');
+                    cross.textContent = '×';
+                    cross.setAttribute('id', `cross-${string}-${fretNum}`);
+                    userFretsGroup.appendChild(cross);
+                }
+            });
+            
+            // 正解だが未設定の位置を緑色で追加
+            missingFrets.forEach(fret => {
+                const [string, fretNum] = fret.split('-');
+                userFrets.add(fret);
+                
+                const coordinates = getFretCoordinates(parseInt(string), parseInt(fretNum));
+                
+                const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                dot.setAttribute('id', `user-fret-${string}-${fretNum}`);
+                dot.setAttribute('cx', coordinates.x);
+                dot.setAttribute('cy', coordinates.y);
+                dot.setAttribute('r', '14');
+                dot.setAttribute('fill', '#10B981'); // 緑色で正解を表示
+                dot.setAttribute('stroke', '#FFFFFF');
+                dot.setAttribute('stroke-width', '3');
+                dot.classList.add('chord-dot');
+                
+                userFretsGroup.appendChild(dot);
+            });
+            
+            // 正解した位置は緑色に変更
+            Array.from(userFrets).filter(fret => correctAnswer.has(fret) && !missingFrets.includes(fret)).forEach(fret => {
+                const [string, fretNum] = fret.split('-');
+                const existingDot = document.getElementById(`user-fret-${string}-${fretNum}`);
+                if (existingDot && !incorrectFrets.includes(fret)) {
+                    existingDot.setAttribute('fill', '#10B981'); // 緑色で正解を表示
+                }
+            });
+            
+            updateCurrentFretsDisplay();
+            announceToScreenReader('正解を表示しました。緑色が正解位置、赤色×マークが間違った位置です');
+        }
     </script>
 </body>
 </html>
