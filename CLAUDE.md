@@ -78,6 +78,12 @@ npm run lint
 - 機能ごとに commit
 - コミットメッセージに Claude Code 署名
 
+## 開発環境
+**作業ディレクトリ**: `guitar-chord-quiz/`
+- 全てのタスク実行は`guitar-chord-quiz`フォルダ内で行う
+- Next.jsプロジェクトの標準構造に準拠
+- 実装ファイルは全て`guitar-chord-quiz/src/`配下に配置
+
 ## 重要な更新情報
 **Apple風デザインシステム対応完了**
 - design_rule.md に基づくApple HIG準拠デザイン
