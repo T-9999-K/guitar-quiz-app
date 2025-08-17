@@ -33,16 +33,26 @@ export interface ChordPattern {
 export interface QuizState {
   /** 現在表示中のコード */
   currentChord: ChordPattern | null;
+  /** ユーザーの回答 */
+  userAnswer: string | null;
   /** 現在のスコア */
   score: number;
   /** 連続正解数 */
   streak: number;
+  /** 総回答数 */
+  totalAnswers: number;
+  /** 正解数 */
+  correctAnswers: number;
   /** 経過時間（秒） */
   timeElapsed: number;
   /** 現在の難易度設定 */
   difficulty: ChordPattern['difficulty'];
   /** 使用したヒント数 */
   hintsUsed: number;
+  /** ゲームがアクティブかどうか */
+  isGameActive: boolean;
+  /** 現在のラウンド数 */
+  currentRound: number;
 }
 
 /**
@@ -137,6 +147,28 @@ export interface GameStats {
 }
 
 /**
+ * ゲーム統計情報（詳細版）
+ */
+export interface GameStatistics {
+  /** プレイしたゲーム数 */
+  gamesPlayed: number;
+  /** 総スコア */
+  totalScore: number;
+  /** 最高連続正解数 */
+  bestStreak: number;
+  /** 正答率（%） */
+  accuracy: number;
+  /** 平均回答時間（秒） */
+  averageTimePerQuestion: number;
+  /** 総経過時間（秒） */
+  totalTimeElapsed: number;
+  /** 使用したヒント数 */
+  hintsUsed: number;
+  /** 難易度 */
+  difficulty: DifficultyLevel;
+}
+
+/**
  * 音声設定
  */
 export interface AudioSettings {
@@ -183,11 +215,16 @@ export function isQuizState(obj: unknown): obj is QuizState {
   
   return (
     (state.currentChord === null || isChordPattern(state.currentChord)) &&
+    (state.userAnswer === null || typeof state.userAnswer === 'string') &&
     typeof state.score === 'number' &&
     typeof state.streak === 'number' &&
+    typeof state.totalAnswers === 'number' &&
+    typeof state.correctAnswers === 'number' &&
     typeof state.timeElapsed === 'number' &&
     ['beginner', 'intermediate', 'advanced'].includes(state.difficulty as string) &&
-    typeof state.hintsUsed === 'number'
+    typeof state.hintsUsed === 'number' &&
+    typeof state.isGameActive === 'boolean' &&
+    typeof state.currentRound === 'number'
   );
 }
 
@@ -243,11 +280,16 @@ export const DEFAULT_GAME_SETTINGS: GameSettings = {
  */
 export const DEFAULT_QUIZ_STATE: QuizState = {
   currentChord: null,
+  userAnswer: null,
   score: 0,
   streak: 0,
+  totalAnswers: 0,
+  correctAnswers: 0,
   timeElapsed: 0,
   difficulty: 'beginner',
-  hintsUsed: 0
+  hintsUsed: 0,
+  isGameActive: false,
+  currentRound: 0
 } as const;
 
 /**
