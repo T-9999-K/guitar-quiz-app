@@ -10,6 +10,11 @@
 // =============================================================================
 
 /**
+ * 難易度レベル
+ */
+export type ChordDifficulty = 'beginner' | 'intermediate' | 'advanced';
+
+/**
  * コードパターン - ギターコードの指板位置情報
  */
 export interface ChordPattern {
@@ -20,11 +25,15 @@ export interface ChordPattern {
   /** 各弦を押さえる指番号 (null = 押さえない) */
   fingers: (number | null)[];
   /** 難易度レベル */
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  difficulty: ChordDifficulty;
   /** ルート音 (例: "C", "D", "F#") */
   root: string;
   /** コード品質 (例: "major", "minor", "7th") */
   quality: string;
+  /** カテゴリ（オプション） */
+  category?: string;
+  /** 説明（オプション） */
+  description?: string;
 }
 
 /**
@@ -46,7 +55,7 @@ export interface QuizState {
   /** 経過時間（秒） */
   timeElapsed: number;
   /** 現在の難易度設定 */
-  difficulty: ChordPattern['difficulty'];
+  difficulty: ChordDifficulty;
   /** 使用したヒント数 */
   hintsUsed: number;
   /** ゲームがアクティブかどうか */
