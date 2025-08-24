@@ -77,6 +77,7 @@ npm run lint
 - main ブランチでの直接開発
 - 機能ごとに commit
 - コミットメッセージに Claude Code 署名
+- **タスク完了時の必須手順**: `git commit` → `git push` を自動実行
 
 ## 開発環境
 **作業ディレクトリ**: `guitar-chord-quiz/`
