@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { QuizGame } from '@/components/quiz/QuizGame';
 import { ChordDifficulty } from '@/types';
-import { Button } from '@/components/ui/Button';
+import { Button, AudioControls } from '@/components/ui';
+import { useAudio } from '@/hooks/useAudio';
 
 /**
  * ホームページコンポーネント
@@ -13,9 +14,13 @@ export default function HomePage() {
   const [selectedDifficulty, setSelectedDifficulty] = useState<ChordDifficulty | null>(null);
   const [showGame, setShowGame] = useState(false);
   
+  // 音声制御フック
+  const audio = useAudio();
+  
   const handleStartGame = (difficulty: ChordDifficulty) => {
     setSelectedDifficulty(difficulty);
     setShowGame(true);
+    audio.playClick(); // ボタンクリック音
   };
   
   const handleGameEnd = () => {
@@ -40,6 +45,7 @@ export default function HomePage() {
         <QuizGame 
           difficulty={selectedDifficulty}
           onGameEnd={handleGameEnd}
+          audioHook={audio}
         />
       </div>
     );
@@ -55,6 +61,23 @@ export default function HomePage() {
           <h1 className="text-5xl font-bold text-gray-900">
             ギターコードクイズ
           </h1>
+        </div>
+        
+        {/* 音声コントロール */}
+        <div className="flex justify-center mb-6">
+          <AudioControls
+            isEnabled={audio.isEnabled}
+            isInitialized={audio.isInitialized}
+            isSupported={audio.isSupported}
+            audioContextState={audio.audioContextState}
+            volume={audio.volume}
+            effectsVolume={audio.effectsVolume}
+            onToggle={audio.toggleAudio}
+            onVolumeChange={audio.changeVolume}
+            onEffectsVolumeChange={audio.changeEffectsVolume}
+            onEnable={audio.enableAudio}
+            className="bg-white rounded-xl shadow-lg p-4"
+          />
         </div>
         <p className="text-2xl text-gray-600 mb-4 font-medium">
           フレットボード上の指板位置からコード名を当てよう！

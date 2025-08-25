@@ -50,26 +50,28 @@ export default function RootLayout({
                     ギターコードクイズ
                   </h1>
                 </div>
-                <nav className="hidden md:flex items-center space-x-6">
-                  <a 
-                    href="/" 
-                    className="text-gray-600 hover:text-gray-900 transition-colors"
-                  >
-                    ホーム
-                  </a>
-                  <a 
-                    href="#about" 
-                    className="text-gray-600 hover:text-gray-900 transition-colors"
-                  >
-                    使い方
-                  </a>
-                  <a 
-                    href="#stats" 
-                    className="text-gray-600 hover:text-gray-900 transition-colors"
-                  >
-                    統計
-                  </a>
-                </nav>
+                <div className="flex items-center space-x-6">
+                  <nav className="hidden md:flex items-center space-x-6">
+                    <a 
+                      href="/" 
+                      className="text-gray-600 hover:text-gray-900 transition-colors"
+                    >
+                      ホーム
+                    </a>
+                    <a 
+                      href="#about" 
+                      className="text-gray-600 hover:text-gray-900 transition-colors"
+                    >
+                      使い方
+                    </a>
+                    <a 
+                      href="#stats" 
+                      className="text-gray-600 hover:text-gray-900 transition-colors"
+                    >
+                      統計
+                    </a>
+                  </nav>
+                </div>
                 
                 {/* モバイルメニューボタン */}
                 <button 

@@ -13,6 +13,7 @@ import { useQuizState } from '../../hooks/useQuizState';
 import { useResponsiveBreakpoints } from '../../hooks/useMediaQuery';
 import { ResponsiveFretboard } from '../fretboard/ResponsiveFretboard';
 import { AnswerInput } from './AnswerInput';
+import { useAudio } from '../../hooks/useAudio';
 import clsx from 'clsx';
 
 // =============================================================================
@@ -27,6 +28,8 @@ interface QuizGameProps {
   difficulty: DifficultyLevel;
   /** ゲーム終了時のコールバック */
   onGameEnd?: (finalScore: number, statistics: any) => void;
+  /** 音声フック（オプション - 親から渡される場合） */
+  audioHook?: ReturnType<typeof useAudio>;
   /** 追加のCSSクラス */
   className?: string;
   /** デバッグモード（開発用） */
@@ -229,6 +232,7 @@ const GameStartScreen: React.FC<{
 export const QuizGame: React.FC<QuizGameProps> = ({
   difficulty,
   onGameEnd,
+  audioHook,
   className,
   debugMode = false,
 }) => {
@@ -253,6 +257,10 @@ export const QuizGame: React.FC<QuizGameProps> = ({
   const [currentHint, setCurrentHint] = useState<string>('');
   const [gameEnded, setGameEnded] = useState(false);
 
+  // 音声制御（親から渡されない場合は独自に初期化）
+  const localAudio = useAudio();
+  const audio = audioHook || localAudio;
+
   // レスポンシブ設定
   const { isMobile, isTablet } = useResponsiveBreakpoints();
 
@@ -268,6 +276,13 @@ export const QuizGame: React.FC<QuizGameProps> = ({
     if (!gameActive || showResult || !state.currentChord) return;
 
     const isCorrect = submitAnswer(answer);
+    
+    // 音声フィードバック
+    if (isCorrect) {
+      audio.playSuccess();
+    } else {
+      audio.playError();
+    }
     
     // デバッグ情報
     if (debugMode) {
@@ -302,6 +317,9 @@ export const QuizGame: React.FC<QuizGameProps> = ({
     const hint = useHint();
     setCurrentHint(hint);
     setShowHintPanel(true);
+    
+    // ヒント音
+    audio.playClick();
 
     // デバッグ情報
     if (debugMode) {
@@ -311,7 +329,22 @@ export const QuizGame: React.FC<QuizGameProps> = ({
         chord: state.currentChord.name,
       });
     }
-  }, [state.currentChord, state.hintsUsed, useHint, debugMode]);
+  }, [state.currentChord, state.hintsUsed, useHint, debugMode, audio]);
+
+  // コード再生処理
+  const handlePlayChord = useCallback(() => {
+    if (!state.currentChord) return;
+    
+    audio.playChord(state.currentChord, 2); // 2秒間再生
+    
+    // デバッグ情報
+    if (debugMode) {
+      console.log('Chord played:', {
+        chord: state.currentChord.name,
+        frets: state.currentChord.frets,
+      });
+    }
+  }, [state.currentChord, audio, debugMode]);
 
   // ゲーム開始処理
   const handleGameStart = useCallback(() => {
@@ -410,23 +443,39 @@ export const QuizGame: React.FC<QuizGameProps> = ({
               placeholder="コード名を入力..."
             />
 
-            {/* ヒントボタン */}
-            {!showResult && state.hintsUsed < 3 && (
-              <button
-                onClick={handleHintRequest}
-                disabled={showHintPanel}
-                className={clsx(
-                  'mt-4 w-full py-3 rounded-lg font-medium transition-all duration-200',
-                  'focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2',
-                  showHintPanel
-                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                    : 'bg-yellow-500 text-white hover:bg-yellow-600 active:bg-yellow-700'
-                )}
-                aria-label={`ヒントを表示 (残り${3 - state.hintsUsed}回)`}
-              >
-                💡 ヒントを表示 ({3 - state.hintsUsed}回残り)
-              </button>
-            )}
+            {/* 操作ボタン */}
+            <div className="mt-4 flex gap-3">
+              {/* ヒントボタン */}
+              {!showResult && state.hintsUsed < 3 && (
+                <button
+                  onClick={handleHintRequest}
+                  disabled={showHintPanel}
+                  className={clsx(
+                    'flex-1 py-3 rounded-lg font-medium transition-all duration-200',
+                    'focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2',
+                    showHintPanel
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                      : 'bg-yellow-500 text-white hover:bg-yellow-600 active:bg-yellow-700'
+                  )}
+                  aria-label={`ヒントを表示 (残り${3 - state.hintsUsed}回)`}
+                >
+                  💡 ヒント ({3 - state.hintsUsed})
+                </button>
+              )}
+              
+              {/* コード再生ボタン */}
+              {!showResult && (
+                <button
+                  onClick={handlePlayChord}
+                  className="flex-1 py-3 rounded-lg font-medium transition-all duration-200
+                           bg-green-500 text-white hover:bg-green-600 active:bg-green-700
+                           focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                  aria-label="コードを再生"
+                >
+                  🔊 音を聞く
+                </button>
+              )}
+            </div>
 
             {/* ゲーム制御ボタン */}
             <div className="mt-4 flex gap-2">
