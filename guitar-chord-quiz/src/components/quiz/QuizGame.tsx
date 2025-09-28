@@ -14,6 +14,7 @@ import { useResponsiveBreakpoints } from '../../hooks/useMediaQuery';
 import { ResponsiveFretboard } from '../fretboard/ResponsiveFretboard';
 import { AnswerInput } from './AnswerInput';
 import { useAudio } from '../../hooks/useAudio';
+import { AudioVisualizer } from '../ui/AudioVisualizer';
 import clsx from 'clsx';
 
 // =============================================================================
@@ -397,6 +398,21 @@ export const QuizGame: React.FC<QuizGameProps> = ({
         />
       </div>
 
+      {/* 音声可視化 */}
+      <div className="mb-6">
+        <div className="bg-white rounded-lg shadow-sm p-4">
+          <AudioVisualizer
+            currentChord={state.currentChord}
+            isAudioEnabled={audio.isEnabled}
+            isAudioInitialized={audio.isInitialized}
+            volume={audio.volume}
+            effectsVolume={audio.effectsVolume}
+            compact={isMobile}
+            className="w-full"
+          />
+        </div>
+      </div>
+
       {/* メインゲームエリア */}
       <div className={clsx(
         'grid gap-6',
@@ -414,6 +430,10 @@ export const QuizGame: React.FC<QuizGameProps> = ({
                 showFingers={false} // 指番号は表示しない（難易度維持のため）
                 capoPosition={0}
                 className="fretboard-quiz"
+                onStringPlay={(stringIndex, fret) => {
+                  // 弦をクリックした時の音声フィードバック
+                  audio.playString(stringIndex - 1, fret, 0.8);
+                }}
               />
             )}
           </div>
