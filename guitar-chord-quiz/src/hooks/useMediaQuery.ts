@@ -139,7 +139,7 @@ export const useIsTouchDevice = (): boolean => {
     // タッチイベントのサポートを確認
     const hasTouch = 'ontouchstart' in window || 
                      navigator.maxTouchPoints > 0 || 
-                     // @ts-ignore - IE/Edge対応
+                     // @ts-expect-error - IE/Edge対応
                      navigator.msMaxTouchPoints > 0;
 
     setIsTouchDevice(hasTouch);

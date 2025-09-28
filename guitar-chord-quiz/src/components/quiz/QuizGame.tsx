@@ -27,7 +27,7 @@ interface QuizGameProps {
   /** 難易度設定 */
   difficulty: DifficultyLevel;
   /** ゲーム終了時のコールバック */
-  onGameEnd?: (finalScore: number, statistics: any) => void;
+  onGameEnd?: (finalScore: number, statistics: object) => void;
   /** 音声フック（オプション - 親から渡される場合） */
   audioHook?: ReturnType<typeof useAudio>;
   /** 追加のCSSクラス */
@@ -314,10 +314,10 @@ export const QuizGame: React.FC<QuizGameProps> = ({
   const handleHintRequest = useCallback(() => {
     if (!state.currentChord || state.hintsUsed >= 3) return;
 
-    const hint = useHint();
+    const hint = `ヒント: このコードは${state.currentChord.frets.filter(f => f !== null).length}本の弦を押弦します`;
     setCurrentHint(hint);
     setShowHintPanel(true);
-    
+
     // ヒント音
     audio.playClick();
 

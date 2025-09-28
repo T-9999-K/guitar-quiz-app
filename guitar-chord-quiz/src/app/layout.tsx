@@ -52,12 +52,12 @@ export default function RootLayout({
                 </div>
                 <div className="flex items-center space-x-6">
                   <nav className="hidden md:flex items-center space-x-6">
-                    <a 
-                      href="/" 
+                    <button
+                      onClick={() => window.location.href = '/'}
                       className="text-gray-600 hover:text-gray-900 transition-colors"
                     >
                       ホーム
-                    </a>
+                    </button>
                     <a 
                       href="#about" 
                       className="text-gray-600 hover:text-gray-900 transition-colors"
