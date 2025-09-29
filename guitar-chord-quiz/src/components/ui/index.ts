@@ -27,6 +27,10 @@ export {
   InlineLoader
 } from './LoadingSpinner';
 
+export { Settings, SettingsModal } from './Settings';
+
+export { Statistics } from './Statistics';
+
 // 今後追加されるUIコンポーネントをここからエクスポート
 // 例: export { Card } from './Card';
 // 例: export { Input } from './Input';
