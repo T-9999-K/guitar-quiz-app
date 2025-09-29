@@ -12,13 +12,6 @@ import Link from 'next/link';
 import { Settings } from '../../components/ui/Settings';
 import { Statistics } from '../../components/ui/Statistics';
 
-/**
- * 設定ページメタデータ
- */
-export const metadata = {
-  title: '設定・統計 | Guitar Chord Quiz',
-  description: 'ゲーム設定、テーマ切り替え、統計情報の確認'
-};
 
 /**
  * 設定ページコンポーネント

@@ -32,6 +32,8 @@ export interface ScoreRecord {
   streak: number;
   /** 経過時間（秒） */
   timeElapsed: number;
+  /** プレイ時間（秒） - timeElapsedのエイリアス */
+  timeSpent: number;
   /** 使用したヒント数 */
   hintsUsed: number;
   /** ゲームID（重複チェック用） */

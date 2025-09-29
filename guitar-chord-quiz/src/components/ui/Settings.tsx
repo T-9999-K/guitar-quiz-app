@@ -185,9 +185,11 @@ export const Settings: React.FC<SettingsProps> = ({
           <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
             <AudioControls
               isEnabled={audioControls.isEnabled}
+              isSupported={audioControls.isSupported}
+              audioContextState={audioControls.audioContextState}
               volume={audioControls.volume}
               effectsVolume={audioControls.effectsVolume}
-              onToggle={audioControls.setIsEnabled}
+              onToggle={audioControls.toggleAudio}
               onVolumeChange={audioControls.changeVolume}
               onEffectsVolumeChange={audioControls.changeEffectsVolume}
               onEnable={audioControls.enableAudio}

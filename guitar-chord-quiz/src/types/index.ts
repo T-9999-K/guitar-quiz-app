@@ -75,7 +75,11 @@ export interface GameSettings {
   /** カポタストの位置 (0 = カポなし) */
   capoPosition: number;
   /** テーマ設定 */
-  theme: 'light' | 'dark';
+  theme: 'light' | 'dark' | 'system';
+  /** 高コントラストモード */
+  highContrast?: boolean;
+  /** モーション軽減 */
+  reduceMotion?: boolean;
 }
 
 /**
