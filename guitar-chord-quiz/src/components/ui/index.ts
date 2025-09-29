@@ -10,6 +10,23 @@ export { AudioControls } from './AudioControls';
 
 export { AudioVisualizer, AudioIndicator } from './AudioVisualizer';
 
+export {
+  FeedbackAnimation,
+  ScoreAnimation,
+  StreakAnimation,
+  PointsAnimation,
+  HintAnimation
+} from './FeedbackAnimation';
+
+export {
+  LoadingSpinner,
+  FretboardLoader,
+  AudioLoader,
+  QuizLoader,
+  PageLoader,
+  InlineLoader
+} from './LoadingSpinner';
+
 // 今後追加されるUIコンポーネントをここからエクスポート
 // 例: export { Card } from './Card';
 // 例: export { Input } from './Input';

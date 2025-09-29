@@ -8,13 +8,15 @@
 'use client';
 
 import React, { useState, useCallback, useEffect } from 'react';
-import { ChordPattern, DifficultyLevel } from '../../types';
+import { DifficultyLevel } from '../../types';
 import { useQuizState } from '../../hooks/useQuizState';
 import { useResponsiveBreakpoints } from '../../hooks/useMediaQuery';
 import { ResponsiveFretboard } from '../fretboard/ResponsiveFretboard';
 import { AnswerInput } from './AnswerInput';
 import { useAudio } from '../../hooks/useAudio';
 import { AudioVisualizer } from '../ui/AudioVisualizer';
+import { FeedbackAnimation, ScoreAnimation, StreakAnimation, PointsAnimation, HintAnimation } from '../ui/FeedbackAnimation';
+import { QuizLoader } from '../ui/LoadingSpinner';
 import clsx from 'clsx';
 
 // =============================================================================
@@ -55,10 +57,6 @@ interface ScoreDisplayProps {
   correctAnswers: number;
 }
 
-/**
- * ヒントの種類
- */
-type HintType = 'root' | 'quality' | 'difficulty' | 'first-letter';
 
 // =============================================================================
 // Score Display Component - スコア表示コンポーネント
@@ -98,14 +96,27 @@ const ScoreDisplay: React.FC<ScoreDisplayProps> = ({
         isMobile ? 'grid-cols-2' : 'grid-cols-3 md:grid-cols-6'
       )}>
         {/* スコア */}
-        <div className="min-w-0">
-          <div className="text-2xl font-bold text-blue-600 truncate">{score.toLocaleString()}</div>
+        <div className="min-w-0 relative">
+          <div className="text-2xl font-bold text-blue-600 truncate">
+            <ScoreAnimation
+              score={score}
+              previousScore={prevScore}
+              format={(s) => s.toLocaleString()}
+            />
+          </div>
           <div className="text-sm text-gray-600">スコア</div>
+          <PointsAnimation
+            points={0}
+            show={false}
+            position="top"
+          />
         </div>
-        
+
         {/* 連続正解 */}
         <div className="min-w-0">
-          <div className="text-2xl font-bold text-green-600">{streak}</div>
+          <div className="text-2xl font-bold">
+            <StreakAnimation streak={streak} />
+          </div>
           <div className="text-sm text-gray-600">連続正解</div>
         </div>
         
@@ -248,15 +259,19 @@ export const QuizGame: React.FC<QuizGameProps> = ({
     resetQuiz,
     submitAnswer,
     nextChord,
-    useHint,
-    pauseGame,
-    resumeGame,
   } = useQuizState(difficulty);
 
   // ローカル状態
   const [showHintPanel, setShowHintPanel] = useState(false);
   const [currentHint, setCurrentHint] = useState<string>('');
   const [gameEnded, setGameEnded] = useState(false);
+
+  // アニメーション状態
+  const [feedbackType, setFeedbackType] = useState<'success' | 'error' | null>(null);
+  const [showPointsAnimation, setShowPointsAnimation] = useState(false);
+  const [pointsGained, setPointsGained] = useState(0);
+  const [prevScore, setPrevScore] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   // 音声制御（親から渡されない場合は独自に初期化）
   const localAudio = useAudio();
@@ -276,15 +291,29 @@ export const QuizGame: React.FC<QuizGameProps> = ({
   const handleAnswerSubmit = useCallback(async (answer: string) => {
     if (!gameActive || showResult || !state.currentChord) return;
 
+    const currentScore = state.score;
     const isCorrect = submitAnswer(answer);
-    
+
     // 音声フィードバック
     if (isCorrect) {
       audio.playSuccess();
     } else {
       audio.playError();
     }
-    
+
+    // アニメーションフィードバック
+    setFeedbackType(isCorrect ? 'success' : 'error');
+
+    // ポイント獲得アニメーション
+    if (isCorrect) {
+      const pointsEarned = state.score - currentScore;
+      if (pointsEarned > 0) {
+        setPointsGained(pointsEarned);
+        setShowPointsAnimation(true);
+        setTimeout(() => setShowPointsAnimation(false), 1500);
+      }
+    }
+
     // デバッグ情報
     if (debugMode) {
       console.log('Answer submitted:', {
@@ -296,20 +325,30 @@ export const QuizGame: React.FC<QuizGameProps> = ({
     }
 
     // 結果表示後、一定時間で次の問題へ
+    setTimeout(() => {
+      setFeedbackType(null);
+    }, 1000);
+
     if (isCorrect) {
       setTimeout(() => {
         setShowHintPanel(false);
         setCurrentHint('');
+        setPrevScore(state.score);
+        setIsLoading(true);
         nextChord();
+        setTimeout(() => setIsLoading(false), 800);
       }, 1500);
     } else {
       setTimeout(() => {
         setShowHintPanel(false);
         setCurrentHint('');
+        setPrevScore(state.score);
+        setIsLoading(true);
         nextChord();
+        setTimeout(() => setIsLoading(false), 800);
       }, 2500);
     }
-  }, [gameActive, showResult, state.currentChord, submitAnswer, nextChord, state.score, debugMode]);
+  }, [gameActive, showResult, state.currentChord, state.score, submitAnswer, nextChord, debugMode, audio]);
 
   // ヒント表示処理
   const handleHintRequest = useCallback(() => {
@@ -330,7 +369,7 @@ export const QuizGame: React.FC<QuizGameProps> = ({
         chord: state.currentChord.name,
       });
     }
-  }, [state.currentChord, state.hintsUsed, useHint, debugMode, audio]);
+  }, [state.currentChord, state.hintsUsed, debugMode, audio]);
 
   // コード再生処理
   const handlePlayChord = useCallback(() => {
@@ -413,14 +452,25 @@ export const QuizGame: React.FC<QuizGameProps> = ({
         </div>
       </div>
 
+      {/* ローディング表示 */}
+      {isLoading && (
+        <div className="mb-6">
+          <QuizLoader message="次の問題を準備中..." />
+        </div>
+      )}
+
       {/* メインゲームエリア */}
-      <div className={clsx(
-        'grid gap-6',
-        isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 xl:grid-cols-3'
-      )}>
+      <FeedbackAnimation
+        type={feedbackType}
+        onComplete={() => setFeedbackType(null)}
+      >
+        <div className={clsx(
+          'grid gap-6',
+          isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 xl:grid-cols-3'
+        )}>
         {/* フレットボード */}
         <div className={clsx(isMobile ? 'col-span-1' : 'lg:col-span-2')}>
-          <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="bg-white rounded-lg shadow-lg p-6 relative">
             <h2 className="text-lg font-semibold text-gray-800 mb-4">
               このコードは何でしょう？
             </h2>
@@ -436,20 +486,23 @@ export const QuizGame: React.FC<QuizGameProps> = ({
                 }}
               />
             )}
+            {/* ポイント獲得アニメーション */}
+            <PointsAnimation
+              points={pointsGained}
+              show={showPointsAnimation}
+              position="top"
+              onComplete={() => setShowPointsAnimation(false)}
+            />
           </div>
         </div>
 
         {/* サイドパネル */}
         <div className="space-y-4">
           {/* ヒント表示 */}
-          {showHintPanel && currentHint && (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-              <h3 className="font-semibold text-yellow-800 mb-2 flex items-center">
-                💡 ヒント
-              </h3>
-              <p className="text-yellow-700">{currentHint}</p>
-            </div>
-          )}
+          <HintAnimation
+            show={showHintPanel}
+            hint={currentHint}
+          />
 
           {/* 回答入力エリア */}
           <div className="bg-white rounded-lg shadow-lg p-6">
@@ -559,7 +612,8 @@ export const QuizGame: React.FC<QuizGameProps> = ({
             </div>
           )}
         </div>
-      </div>
+        </div>
+      </FeedbackAnimation>
     </div>
   );
 };

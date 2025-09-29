@@ -223,6 +223,262 @@
   }
 }
 
+/* Task 13: 追加アニメーション */
+
+/* フレットボード押弦エフェクト */
+.fret-press {
+  transition: all 0.2s ease-out;
+}
+
+.fret-press:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.fret-press:active {
+  transform: scale(0.95);
+}
+
+/* ストリーク効果 */
+@keyframes streak-glow {
+  0% {
+    text-shadow: 0 0 5px rgba(249, 115, 22, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(249, 115, 22, 1), 0 0 30px rgba(249, 115, 22, 0.5);
+    transform: scale(1.05);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(249, 115, 22, 0.5);
+    transform: scale(1);
+  }
+}
+
+.streak-glow {
+  animation: streak-glow 1.5s infinite;
+}
+
+/* パルスグロー効果 */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* カードフリップ効果 */
+@keyframes card-flip {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(90deg); }
+  100% { transform: rotateY(0deg); }
+}
+
+.animate-card-flip {
+  animation: card-flip 0.6s ease-in-out;
+}
+
+/* スケールバウンス */
+@keyframes scale-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.animate-scale-bounce {
+  animation: scale-bounce 0.3s ease-out;
+}
+
+/* フェード・スライドイン効果 */
+.fade-slide-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-slide-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 300ms ease-out;
+}
+
+.fade-slide-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-slide-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 300ms ease-in;
+}
+
+/* 回転フェードイン */
+@keyframes rotate-fade-in {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.animate-rotate-fade-in {
+  animation: rotate-fade-in 0.4s ease-out;
+}
+
+/* グラデーションアニメーション */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* 波紋効果 */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: ripple 0.6s linear;
+}
+
+/* 呼吸効果 */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+.animate-breathe {
+  animation: breathe 2s infinite ease-in-out;
+}
+
+/* スペクトラムアニメーション（音響ビジュアライザー用） */
+@keyframes spectrum {
+  0%, 100% { height: 4px; }
+  50% { height: 20px; }
+}
+
+.animate-spectrum {
+  animation: spectrum 0.8s infinite ease-in-out;
+}
+
+/* フローティングテキスト */
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.9);
+  }
+}
+
+.animate-float-up {
+  animation: float-up 1.5s ease-out forwards;
+}
+
+/* ネオングロー効果 */
+@keyframes neon-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
+  50% {
+    text-shadow:
+      0 0 2px currentColor,
+      0 0 5px currentColor,
+      0 0 8px currentColor,
+      0 0 12px currentColor,
+      0 0 20px currentColor;
+  }
+}
+
+.animate-neon-glow {
+  animation: neon-glow 2s infinite ease-in-out;
+}
+
+/* コンフェティ効果（成功時用） */
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.animate-confetti {
+  animation: confetti 1s ease-out forwards;
+}
+
+/* タイプライター効果 */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.animate-typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 2s steps(40, end);
+}
+
+/* reduced-motionユーザー向けの配慮 */
+@media (prefers-reduced-motion: reduce) {
+  .animate-success-gentle,
+  .animate-error-gentle,
+  .animate-pulse-glow,
+  .animate-card-flip,
+  .animate-scale-bounce,
+  .animate-rotate-fade-in,
+  .animate-gradient,
+  .animate-ripple,
+  .animate-breathe,
+  .animate-spectrum,
+  .animate-float-up,
+  .animate-neon-glow,
+  .animate-confetti,
+  .animate-typewriter,
+  .streak-glow,
+  .fret-press:hover {
+    animation: none !important;
+    transform: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* ダークモード対応（将来用） */
 @media (prefers-color-scheme: dark) {
   .card {
