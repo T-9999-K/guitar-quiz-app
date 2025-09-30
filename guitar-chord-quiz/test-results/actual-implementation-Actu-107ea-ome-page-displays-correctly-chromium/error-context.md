@@ -1,0 +1,197 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - generic [ref=e7]: 🎸
+          - heading "ギターコードクイズ" [level=1] [ref=e8]
+        - navigation [ref=e10]:
+          - link "🏠 ホーム" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "⚙️ 設定" [ref=e12] [cursor=pointer]:
+            - /url: /settings
+          - link "📖 使い方" [ref=e13] [cursor=pointer]:
+            - /url: "#about"
+        - button "メニューを開く" [ref=e14]:
+          - img
+    - main [ref=e16]:
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - generic [ref=e21]: 🎸
+            - heading "ギターコードクイズ" [level=1] [ref=e22]
+          - generic [ref=e24]:
+            - button "🔊音声を有効化" [ref=e25]:
+              - generic [ref=e26]:
+                - generic [ref=e27]: 🔊
+                - text: 音声を有効化
+            - generic [ref=e28]: クリックして音声システムを開始
+          - paragraph [ref=e29]: フレットボード上の指板位置からコード名を当てよう！
+          - paragraph [ref=e30]: ギターコードを視覚的に覚えて演奏スキルを向上させましょう。 初級から上級まで段階的に学習できます。
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - heading "難易度を選択" [level=2] [ref=e33]
+            - paragraph [ref=e34]: あなたのレベルに合った難易度でスタートしましょう
+          - generic [ref=e35]:
+            - generic [ref=e36]:
+              - generic [ref=e37]: 🌱
+              - heading "初級" [level=3] [ref=e38]
+              - paragraph [ref=e39]:
+                - text: 基本的なオープンコード
+                - generic [ref=e40]: C, G, D, A, E, Am, Em, Dm, F
+              - list [ref=e42]:
+                - listitem [ref=e43]:
+                  - generic [ref=e44]: ✓
+                  - text: 初心者向けの簡単なコード
+                - listitem [ref=e45]:
+                  - generic [ref=e46]: ✓
+                  - text: オープンコード中心
+                - listitem [ref=e47]:
+                  - generic [ref=e48]: ✓
+                  - text: フレット1-4使用
+              - button "初級でスタート" [ref=e49]:
+                - generic [ref=e50]: 初級でスタート
+            - generic [ref=e51]:
+              - generic [ref=e52]: 🔥
+              - heading "中級" [level=3] [ref=e53]
+              - paragraph [ref=e54]:
+                - text: バレーコード・セブンスコード
+                - generic [ref=e55]: F, Bm, B, G7, C7, D7, A7
+              - list [ref=e57]:
+                - listitem [ref=e58]:
+                  - generic [ref=e59]: ✓
+                  - text: バレーコードを含む
+                - listitem [ref=e60]:
+                  - generic [ref=e61]: ✓
+                  - text: セブンスコード
+                - listitem [ref=e62]:
+                  - generic [ref=e63]: ✓
+                  - text: フレット1-7使用
+              - button "中級でスタート" [ref=e64]:
+                - generic [ref=e65]: 中級でスタート
+            - generic [ref=e66]:
+              - generic [ref=e67]: ⚡
+              - heading "上級" [level=3] [ref=e68]
+              - paragraph [ref=e69]:
+                - text: 複雑なコード・テンションコード
+                - generic [ref=e70]: Cmaj7, Dm7, Gsus4, Fadd9
+              - list [ref=e72]:
+                - listitem [ref=e73]:
+                  - generic [ref=e74]: ✓
+                  - text: テンションコード
+                - listitem [ref=e75]:
+                  - generic [ref=e76]: ✓
+                  - text: 複雑な指使い
+                - listitem [ref=e77]:
+                  - generic [ref=e78]: ✓
+                  - text: フレット1-12使用
+              - button "上級でスタート" [ref=e79]:
+                - generic [ref=e80]: 上級でスタート
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - heading "アプリの特徴" [level=2] [ref=e83]
+            - paragraph [ref=e84]: 学習効果を最大化する充実した機能
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - generic [ref=e87]: 🎸
+              - heading "リアルなフレットボード" [level=3] [ref=e88]
+              - paragraph [ref=e89]: 実際のギターと同じ比率で描画されたフレットボード。 正確な指板感覚で学習できます。
+            - generic [ref=e90]:
+              - generic [ref=e91]: 📱
+              - heading "レスポンシブ対応" [level=3] [ref=e92]
+              - paragraph [ref=e93]: スマートフォン・タブレット・PCで最適な表示。 いつでもどこでも学習できます。
+            - generic [ref=e94]:
+              - generic [ref=e95]: 🎯
+              - heading "段階的学習" [level=3] [ref=e96]
+              - paragraph [ref=e97]: 初級から上級まで段階的にスキルアップ。 着実にレベルアップできます。
+            - generic [ref=e98]:
+              - generic [ref=e99]: 💡
+              - heading "ヒント機能" [level=3] [ref=e100]
+              - paragraph [ref=e101]: ルート音・コードタイプのヒントで学習をサポート。 つまづいても安心です。
+        - generic [ref=e102]:
+          - generic [ref=e103]:
+            - heading "技術仕様・アクセシビリティ" [level=2] [ref=e104]
+            - paragraph [ref=e105]: 最新技術と完全アクセシビリティ対応
+          - generic [ref=e106]:
+            - generic [ref=e107]:
+              - generic [ref=e108]:
+                - generic [ref=e109]: ⚡
+                - heading "技術スタック" [level=3] [ref=e110]
+              - list [ref=e111]:
+                - listitem [ref=e112]: Next.js 15 + TypeScript
+                - listitem [ref=e113]: Tailwind CSS
+                - listitem [ref=e114]: PWA対応
+                - listitem [ref=e115]: Web Audio API
+            - generic [ref=e116]:
+              - generic [ref=e117]:
+                - generic [ref=e118]: ♿
+                - heading "アクセシビリティ" [level=3] [ref=e119]
+              - list [ref=e120]:
+                - listitem [ref=e121]: WCAG 2.1 AAA準拠
+                - listitem [ref=e122]: Apple HIG準拠
+                - listitem [ref=e123]: キーボード操作対応
+                - listitem [ref=e124]: スクリーンリーダー対応
+            - generic [ref=e125]:
+              - generic [ref=e126]:
+                - generic [ref=e127]: 🎨
+                - heading "デザイン" [level=3] [ref=e128]
+              - list [ref=e129]:
+                - listitem [ref=e130]: 44px最小タッチターゲット
+                - listitem [ref=e131]: 7:1コントラスト比
+                - listitem [ref=e132]: 高コントラストモード対応
+                - listitem [ref=e133]: モーション配慮対応
+          - paragraph [ref=e135]: すべてのユーザーが平等にご利用いただけるよう設計されています
+        - generic [ref=e137]:
+          - heading "使い方" [level=2] [ref=e138]
+          - generic [ref=e139]:
+            - generic [ref=e140]:
+              - generic [ref=e142]: "1"
+              - heading "難易度選択" [level=3] [ref=e143]
+              - paragraph [ref=e144]: 初級・中級・上級から選択
+            - generic [ref=e145]:
+              - generic [ref=e147]: "2"
+              - heading "コード認識" [level=3] [ref=e148]
+              - paragraph [ref=e149]: フレットボードを見てコード名を回答
+            - generic [ref=e150]:
+              - generic [ref=e152]: "3"
+              - heading "スキルアップ" [level=3] [ref=e153]
+              - paragraph [ref=e154]: 繰り返し練習で確実に上達
+    - contentinfo [ref=e155]:
+      - generic [ref=e156]:
+        - generic [ref=e157]:
+          - generic [ref=e158]:
+            - heading "ギターコードクイズ" [level=3] [ref=e159]
+            - paragraph [ref=e160]: フレットボード上の指板位置からコード名を当てるクイズゲーム。 初級から上級まで段階的に学習できます。
+            - generic [ref=e161]:
+              - generic [ref=e162]: 🎸
+              - generic [ref=e163]: 🎵
+              - generic [ref=e164]: 📱
+          - generic [ref=e165]:
+            - heading "主な機能" [level=4] [ref=e166]
+            - list [ref=e167]:
+              - listitem [ref=e168]: • 3つの難易度レベル
+              - listitem [ref=e169]: • リアルタイムスコア表示
+              - listitem [ref=e170]: • ヒント機能付き
+              - listitem [ref=e171]: • レスポンシブデザイン
+              - listitem [ref=e172]: • アクセシビリティ対応
+              - listitem [ref=e173]: • 統計情報表示
+              - listitem [ref=e174]: • ダークモード対応
+          - generic [ref=e175]:
+            - heading "技術仕様" [level=4] [ref=e176]
+            - list [ref=e177]:
+              - listitem [ref=e178]: • Next.js 15 + TypeScript
+              - listitem [ref=e179]: • Tailwind CSS
+              - listitem [ref=e180]: • PWA対応
+              - listitem [ref=e181]: • WCAG 2.1 AAA準拠
+              - listitem [ref=e182]: • Apple HIG準拠
+              - listitem [ref=e183]: • Web Audio API対応
+        - generic [ref=e185]:
+          - paragraph [ref=e186]: © 2024 Guitar Chord Quiz. Created with Claude Code.
+          - generic [ref=e188]: 🤖 Generated with Claude Code
+  - button "Open Next.js Dev Tools" [ref=e194] [cursor=pointer]:
+    - img [ref=e195] [cursor=pointer]
+  - alert [ref=e198]
+```

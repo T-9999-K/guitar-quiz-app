@@ -1,0 +1,1488 @@
+<testsuites id="" name="" tests="65" failures="36" skipped="0" errors="0" time="124.56008100000001">
+<testsuite name="actual-implementation.spec.ts" timestamp="2025-09-29T04:41:14.294Z" hostname="chromium" tests="13" failures="6" skipped="0" time="44.68" errors="0">
+<testcase name="Actual Implementation Tests › Home page displays correctly" classname="actual-implementation.spec.ts" time="2.782">
+<failure message="actual-implementation.spec.ts:19:7 Home page displays correctly" type="FAILURE">
+<![CDATA[  [chromium] › actual-implementation.spec.ts:19:7 › Actual Implementation Tests › Home page displays correctly 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      23 |     // メインタイトルの確認
+      24 |     const mainTitle = page.locator('h1:has-text("ギターコードクイズ")');
+    > 25 |     await expect(mainTitle).toBeVisible();
+         |                             ^
+      26 |
+      27 |     // 説明文の確認
+      28 |     const description = page.locator('text=フレットボード上の指板位置からコード名を当てよう！');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:25:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Difficulty selection cards are functional" classname="actual-implementation.spec.ts" time="3.795">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Beginner game starts correctly" classname="actual-implementation.spec.ts" time="3.813">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Back to menu functionality works" classname="actual-implementation.spec.ts" time="6.916">
+<failure message="actual-implementation.spec.ts:86:7 Back to menu functionality works" type="FAILURE">
+<![CDATA[  [chromium] › actual-implementation.spec.ts:86:7 › Actual Implementation Tests › Back to menu functionality works 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      101 |     await page.waitForTimeout(1000);
+      102 |     const mainTitle = page.locator('h1:has-text("ギターコードクイズ")');
+    > 103 |     await expect(mainTitle).toBeVisible();
+          |                             ^
+      104 |
+      105 |     // 難易度選択ボタンが再び表示されることを確認
+      106 |     const beginnerButtonBack = page.locator('button:has-text("初級でスタート")');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:103:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Features section displays correctly" classname="actual-implementation.spec.ts" time="3.289">
+<failure message="actual-implementation.spec.ts:110:7 Features section displays correctly" type="FAILURE">
+<![CDATA[  [chromium] › actual-implementation.spec.ts:110:7 › Actual Implementation Tests › Features section displays correctly 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=ヒント機能') resolved to 2 elements:
+        1) <h3 class="font-bold text-lg mb-3 text-gray-900">ヒント機能</h3> aka getByRole('heading', { name: 'ヒント機能' })
+        2) <li>• ヒント機能付き</li> aka getByText('• ヒント機能付き')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=ヒント機能')
+
+
+      127 |
+      128 |     const hintFeature = page.locator('text=ヒント機能');
+    > 129 |     await expect(hintFeature).toBeVisible();
+          |                               ^
+      130 |   });
+      131 |
+      132 |   test('Technical specifications section displays', async ({ page }) => {
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:129:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Technical specifications section displays" classname="actual-implementation.spec.ts" time="2.917">
+<failure message="actual-implementation.spec.ts:132:7 Technical specifications section displays" type="FAILURE">
+<![CDATA[  [chromium] › actual-implementation.spec.ts:132:7 › Actual Implementation Tests › Technical specifications section displays 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=Next.js 15 + TypeScript') resolved to 2 elements:
+        1) <li class="flex items-center">…</li> aka getByText('Next.js 15 + TypeScript', { exact: true })
+        2) <li>• Next.js 15 + TypeScript</li> aka getByText('• Next.js 15 + TypeScript')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=Next.js 15 + TypeScript')
+
+
+      143 |
+      144 |     const nextjs = page.locator('text=Next.js 15 + TypeScript');
+    > 145 |     await expect(nextjs).toBeVisible();
+          |                          ^
+      146 |
+      147 |     // アクセシビリティ
+      148 |     const accessibility = page.locator('text=アクセシビリティ');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:145:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › How to use guide is displayed" classname="actual-implementation.spec.ts" time="2.307">
+<failure message="actual-implementation.spec.ts:155:7 How to use guide is displayed" type="FAILURE">
+<![CDATA[  [chromium] › actual-implementation.spec.ts:155:7 › Actual Implementation Tests › How to use guide is displayed 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=使い方') resolved to 2 elements:
+        1) <a href="#about" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-150 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1">📖 使い方</a> aka getByRole('link', { name: '📖 使い方' })
+        2) <h2 class="text-2xl font-bold text-gray-900 mb-6">使い方</h2> aka getByRole('heading', { name: '使い方' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=使い方')
+
+
+      159 |     // 使い方ガイド
+      160 |     const guideTitle = page.locator('text=使い方');
+    > 161 |     await expect(guideTitle).toBeVisible();
+          |                              ^
+      162 |
+      163 |     // ステップの確認
+      164 |     const step1 = page.locator('text=難易度選択');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:161:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › AudioControls component is displayed" classname="actual-implementation.spec.ts" time="2.557">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › All difficulty buttons are clickable" classname="actual-implementation.spec.ts" time="3.191">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Page is accessible via keyboard navigation" classname="actual-implementation.spec.ts" time="4.125">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Responsive layout works on different screen sizes" classname="actual-implementation.spec.ts" time="2.727">
+<failure message="actual-implementation.spec.ts:234:7 Responsive layout works on different screen sizes" type="FAILURE">
+<![CDATA[  [chromium] › actual-implementation.spec.ts:234:7 › Actual Implementation Tests › Responsive layout works on different screen sizes 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      241 |
+      242 |     const title = page.locator('h1:has-text("ギターコードクイズ")');
+    > 243 |     await expect(title).toBeVisible();
+          |                         ^
+      244 |
+      245 |     // タブレットサイズ
+      246 |     await page.setViewportSize({ width: 768, height: 1024 });
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:243:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Settings Page Tests › Settings page loads and displays content" classname="actual-implementation.spec.ts" time="2.388">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Settings Page Tests › Settings page is accessible from home" classname="actual-implementation.spec.ts" time="3.873">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+</testsuite>
+<testsuite name="actual-implementation.spec.ts" timestamp="2025-09-29T04:41:14.294Z" hostname="firefox" tests="13" failures="6" skipped="0" time="137.387" errors="0">
+<testcase name="Actual Implementation Tests › Home page displays correctly" classname="actual-implementation.spec.ts" time="13.606">
+<failure message="actual-implementation.spec.ts:19:7 Home page displays correctly" type="FAILURE">
+<![CDATA[  [firefox] › actual-implementation.spec.ts:19:7 › Actual Implementation Tests › Home page displays correctly 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      23 |     // メインタイトルの確認
+      24 |     const mainTitle = page.locator('h1:has-text("ギターコードクイズ")');
+    > 25 |     await expect(mainTitle).toBeVisible();
+         |                             ^
+      26 |
+      27 |     // 説明文の確認
+      28 |     const description = page.locator('text=フレットボード上の指板位置からコード名を当てよう！');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:25:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-firefox\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-firefox\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-firefox\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Difficulty selection cards are functional" classname="actual-implementation.spec.ts" time="15.658">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Beginner game starts correctly" classname="actual-implementation.spec.ts" time="14.907">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Back to menu functionality works" classname="actual-implementation.spec.ts" time="14.494">
+<failure message="actual-implementation.spec.ts:86:7 Back to menu functionality works" type="FAILURE">
+<![CDATA[  [firefox] › actual-implementation.spec.ts:86:7 › Actual Implementation Tests › Back to menu functionality works 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      101 |     await page.waitForTimeout(1000);
+      102 |     const mainTitle = page.locator('h1:has-text("ギターコードクイズ")');
+    > 103 |     await expect(mainTitle).toBeVisible();
+          |                             ^
+      104 |
+      105 |     // 難易度選択ボタンが再び表示されることを確認
+      106 |     const beginnerButtonBack = page.locator('button:has-text("初級でスタート")');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:103:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-firefox\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-firefox\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-firefox\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Features section displays correctly" classname="actual-implementation.spec.ts" time="5.76">
+<failure message="actual-implementation.spec.ts:110:7 Features section displays correctly" type="FAILURE">
+<![CDATA[  [firefox] › actual-implementation.spec.ts:110:7 › Actual Implementation Tests › Features section displays correctly 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=ヒント機能') resolved to 2 elements:
+        1) <h3 class="font-bold text-lg mb-3 text-gray-900">ヒント機能</h3> aka getByRole('heading', { name: 'ヒント機能' })
+        2) <li>• ヒント機能付き</li> aka getByText('• ヒント機能付き')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=ヒント機能')
+
+
+      127 |
+      128 |     const hintFeature = page.locator('text=ヒント機能');
+    > 129 |     await expect(hintFeature).toBeVisible();
+          |                               ^
+      130 |   });
+      131 |
+      132 |   test('Technical specifications section displays', async ({ page }) => {
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:129:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-firefox\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-firefox\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-firefox\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Technical specifications section displays" classname="actual-implementation.spec.ts" time="5.51">
+<failure message="actual-implementation.spec.ts:132:7 Technical specifications section displays" type="FAILURE">
+<![CDATA[  [firefox] › actual-implementation.spec.ts:132:7 › Actual Implementation Tests › Technical specifications section displays 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=Next.js 15 + TypeScript') resolved to 2 elements:
+        1) <li class="flex items-center">…</li> aka getByText('Next.js 15 + TypeScript', { exact: true })
+        2) <li>• Next.js 15 + TypeScript</li> aka getByText('• Next.js 15 + TypeScript')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=Next.js 15 + TypeScript')
+
+
+      143 |
+      144 |     const nextjs = page.locator('text=Next.js 15 + TypeScript');
+    > 145 |     await expect(nextjs).toBeVisible();
+          |                          ^
+      146 |
+      147 |     // アクセシビリティ
+      148 |     const accessibility = page.locator('text=アクセシビリティ');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:145:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-firefox\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-firefox\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-firefox\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › How to use guide is displayed" classname="actual-implementation.spec.ts" time="11.683">
+<failure message="actual-implementation.spec.ts:155:7 How to use guide is displayed" type="FAILURE">
+<![CDATA[  [firefox] › actual-implementation.spec.ts:155:7 › Actual Implementation Tests › How to use guide is displayed 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=使い方') resolved to 2 elements:
+        1) <a href="#about" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-150 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1">📖 使い方</a> aka getByRole('link', { name: '📖 使い方' })
+        2) <h2 class="text-2xl font-bold text-gray-900 mb-6">使い方</h2> aka getByRole('heading', { name: '使い方' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=使い方')
+
+
+      159 |     // 使い方ガイド
+      160 |     const guideTitle = page.locator('text=使い方');
+    > 161 |     await expect(guideTitle).toBeVisible();
+          |                              ^
+      162 |
+      163 |     // ステップの確認
+      164 |     const step1 = page.locator('text=難易度選択');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:161:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-firefox\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-firefox\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-firefox\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › AudioControls component is displayed" classname="actual-implementation.spec.ts" time="11.354">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › All difficulty buttons are clickable" classname="actual-implementation.spec.ts" time="13.559">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Page is accessible via keyboard navigation" classname="actual-implementation.spec.ts" time="13.716">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Responsive layout works on different screen sizes" classname="actual-implementation.spec.ts" time="6.836">
+<failure message="actual-implementation.spec.ts:234:7 Responsive layout works on different screen sizes" type="FAILURE">
+<![CDATA[  [firefox] › actual-implementation.spec.ts:234:7 › Actual Implementation Tests › Responsive layout works on different screen sizes 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      241 |
+      242 |     const title = page.locator('h1:has-text("ギターコードクイズ")');
+    > 243 |     await expect(title).toBeVisible();
+          |                         ^
+      244 |
+      245 |     // タブレットサイズ
+      246 |     await page.setViewportSize({ width: 768, height: 1024 });
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:243:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-firefox\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-firefox\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-firefox\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Settings Page Tests › Settings page loads and displays content" classname="actual-implementation.spec.ts" time="4.171">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Settings Page Tests › Settings page is accessible from home" classname="actual-implementation.spec.ts" time="6.133">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+</testsuite>
+<testsuite name="actual-implementation.spec.ts" timestamp="2025-09-29T04:41:14.294Z" hostname="webkit" tests="13" failures="7" skipped="0" time="55.538" errors="0">
+<testcase name="Actual Implementation Tests › Home page displays correctly" classname="actual-implementation.spec.ts" time="5.424">
+<failure message="actual-implementation.spec.ts:19:7 Home page displays correctly" type="FAILURE">
+<![CDATA[  [webkit] › actual-implementation.spec.ts:19:7 › Actual Implementation Tests › Home page displays correctly 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      23 |     // メインタイトルの確認
+      24 |     const mainTitle = page.locator('h1:has-text("ギターコードクイズ")');
+    > 25 |     await expect(mainTitle).toBeVisible();
+         |                             ^
+      26 |
+      27 |     // 説明文の確認
+      28 |     const description = page.locator('text=フレットボード上の指板位置からコード名を当てよう！');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:25:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-webkit\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-webkit\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Difficulty selection cards are functional" classname="actual-implementation.spec.ts" time="4.919">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Beginner game starts correctly" classname="actual-implementation.spec.ts" time="6.021">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Back to menu functionality works" classname="actual-implementation.spec.ts" time="7.277">
+<failure message="actual-implementation.spec.ts:86:7 Back to menu functionality works" type="FAILURE">
+<![CDATA[  [webkit] › actual-implementation.spec.ts:86:7 › Actual Implementation Tests › Back to menu functionality works 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      101 |     await page.waitForTimeout(1000);
+      102 |     const mainTitle = page.locator('h1:has-text("ギターコードクイズ")');
+    > 103 |     await expect(mainTitle).toBeVisible();
+          |                             ^
+      104 |
+      105 |     // 難易度選択ボタンが再び表示されることを確認
+      106 |     const beginnerButtonBack = page.locator('button:has-text("初級でスタート")');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:103:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-webkit\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-webkit\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Features section displays correctly" classname="actual-implementation.spec.ts" time="3.114">
+<failure message="actual-implementation.spec.ts:110:7 Features section displays correctly" type="FAILURE">
+<![CDATA[  [webkit] › actual-implementation.spec.ts:110:7 › Actual Implementation Tests › Features section displays correctly 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=ヒント機能') resolved to 2 elements:
+        1) <h3 class="font-bold text-lg mb-3 text-gray-900">ヒント機能</h3> aka getByRole('heading', { name: 'ヒント機能' })
+        2) <li>• ヒント機能付き</li> aka getByText('• ヒント機能付き')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=ヒント機能')
+
+
+      127 |
+      128 |     const hintFeature = page.locator('text=ヒント機能');
+    > 129 |     await expect(hintFeature).toBeVisible();
+          |                               ^
+      130 |   });
+      131 |
+      132 |   test('Technical specifications section displays', async ({ page }) => {
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:129:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-webkit\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-webkit\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Technical specifications section displays" classname="actual-implementation.spec.ts" time="2.819">
+<failure message="actual-implementation.spec.ts:132:7 Technical specifications section displays" type="FAILURE">
+<![CDATA[  [webkit] › actual-implementation.spec.ts:132:7 › Actual Implementation Tests › Technical specifications section displays 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=Next.js 15 + TypeScript') resolved to 2 elements:
+        1) <li class="flex items-center">…</li> aka getByText('Next.js 15 + TypeScript', { exact: true })
+        2) <li>• Next.js 15 + TypeScript</li> aka getByText('• Next.js 15 + TypeScript')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=Next.js 15 + TypeScript')
+
+
+      143 |
+      144 |     const nextjs = page.locator('text=Next.js 15 + TypeScript');
+    > 145 |     await expect(nextjs).toBeVisible();
+          |                          ^
+      146 |
+      147 |     // アクセシビリティ
+      148 |     const accessibility = page.locator('text=アクセシビリティ');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:145:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-webkit\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-webkit\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › How to use guide is displayed" classname="actual-implementation.spec.ts" time="2.781">
+<failure message="actual-implementation.spec.ts:155:7 How to use guide is displayed" type="FAILURE">
+<![CDATA[  [webkit] › actual-implementation.spec.ts:155:7 › Actual Implementation Tests › How to use guide is displayed 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=使い方') resolved to 2 elements:
+        1) <a href="#about" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-150 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1">📖 使い方</a> aka getByRole('link', { name: '📖 使い方' })
+        2) <h2 class="text-2xl font-bold text-gray-900 mb-6">使い方</h2> aka getByRole('heading', { name: '使い方' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=使い方')
+
+
+      159 |     // 使い方ガイド
+      160 |     const guideTitle = page.locator('text=使い方');
+    > 161 |     await expect(guideTitle).toBeVisible();
+          |                              ^
+      162 |
+      163 |     // ステップの確認
+      164 |     const step1 = page.locator('text=難易度選択');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:161:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-webkit\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-webkit\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › AudioControls component is displayed" classname="actual-implementation.spec.ts" time="2.661">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › All difficulty buttons are clickable" classname="actual-implementation.spec.ts" time="4.575">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Page is accessible via keyboard navigation" classname="actual-implementation.spec.ts" time="4.74">
+<failure message="actual-implementation.spec.ts:210:7 Page is accessible via keyboard navigation" type="FAILURE">
+<![CDATA[  [webkit] › actual-implementation.spec.ts:210:7 › Actual Implementation Tests › Page is accessible via keyboard navigation 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator(':focus') resolved to 2 elements:
+        1) <nextjs-portal></nextjs-portal> aka locator('nextjs-portal')
+        2) <button aria-haspopup="menu" data-next-mark="true" aria-expanded="false" data-next-mark-loading="false" aria-label="Open Next.js Dev Tools" data-nextjs-dev-tools-button="true" aria-controls="nextjs-dev-tools-menu">…</button> aka getByRole('button', { name: 'Open Next.js Dev Tools' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator(':focus')
+
+
+      227 |       const currentFocused = page.locator(':focus');
+      228 |       if (await currentFocused.count() > 0) {
+    > 229 |         await expect(currentFocused).toBeVisible();
+          |                                      ^
+      230 |       }
+      231 |     }
+      232 |   });
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:229:38
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-2a44f-ble-via-keyboard-navigation-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-2a44f-ble-via-keyboard-navigation-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-2a44f-ble-via-keyboard-navigation-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-2a44f-ble-via-keyboard-navigation-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-2a44f-ble-via-keyboard-navigation-webkit\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-2a44f-ble-via-keyboard-navigation-webkit\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Responsive layout works on different screen sizes" classname="actual-implementation.spec.ts" time="3.563">
+<failure message="actual-implementation.spec.ts:234:7 Responsive layout works on different screen sizes" type="FAILURE">
+<![CDATA[  [webkit] › actual-implementation.spec.ts:234:7 › Actual Implementation Tests › Responsive layout works on different screen sizes 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      241 |
+      242 |     const title = page.locator('h1:has-text("ギターコードクイズ")');
+    > 243 |     await expect(title).toBeVisible();
+          |                         ^
+      244 |
+      245 |     // タブレットサイズ
+      246 |     await page.setViewportSize({ width: 768, height: 1024 });
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:243:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-webkit\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-webkit\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Settings Page Tests › Settings page loads and displays content" classname="actual-implementation.spec.ts" time="2.821">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Settings Page Tests › Settings page is accessible from home" classname="actual-implementation.spec.ts" time="4.823">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+</testsuite>
+<testsuite name="actual-implementation.spec.ts" timestamp="2025-09-29T04:41:14.294Z" hostname="Mobile Chrome" tests="13" failures="6" skipped="0" time="52.851" errors="0">
+<testcase name="Actual Implementation Tests › Home page displays correctly" classname="actual-implementation.spec.ts" time="3.189">
+<failure message="actual-implementation.spec.ts:19:7 Home page displays correctly" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › actual-implementation.spec.ts:19:7 › Actual Implementation Tests › Home page displays correctly 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      23 |     // メインタイトルの確認
+      24 |     const mainTitle = page.locator('h1:has-text("ギターコードクイズ")');
+    > 25 |     await expect(mainTitle).toBeVisible();
+         |                             ^
+      26 |
+      27 |     // 説明文の確認
+      28 |     const description = page.locator('text=フレットボード上の指板位置からコード名を当てよう！');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:25:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Difficulty selection cards are functional" classname="actual-implementation.spec.ts" time="3.686">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Beginner game starts correctly" classname="actual-implementation.spec.ts" time="4.185">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Back to menu functionality works" classname="actual-implementation.spec.ts" time="5.931">
+<failure message="actual-implementation.spec.ts:86:7 Back to menu functionality works" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › actual-implementation.spec.ts:86:7 › Actual Implementation Tests › Back to menu functionality works 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      101 |     await page.waitForTimeout(1000);
+      102 |     const mainTitle = page.locator('h1:has-text("ギターコードクイズ")');
+    > 103 |     await expect(mainTitle).toBeVisible();
+          |                             ^
+      104 |
+      105 |     // 難易度選択ボタンが再び表示されることを確認
+      106 |     const beginnerButtonBack = page.locator('button:has-text("初級でスタート")');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:103:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-50e78-to-menu-functionality-works-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Features section displays correctly" classname="actual-implementation.spec.ts" time="3.562">
+<failure message="actual-implementation.spec.ts:110:7 Features section displays correctly" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › actual-implementation.spec.ts:110:7 › Actual Implementation Tests › Features section displays correctly 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=ヒント機能') resolved to 2 elements:
+        1) <h3 class="font-bold text-lg mb-3 text-gray-900">ヒント機能</h3> aka getByRole('heading', { name: 'ヒント機能' })
+        2) <li>• ヒント機能付き</li> aka getByText('• ヒント機能付き')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=ヒント機能')
+
+
+      127 |
+      128 |     const hintFeature = page.locator('text=ヒント機能');
+    > 129 |     await expect(hintFeature).toBeVisible();
+          |                               ^
+      130 |   });
+      131 |
+      132 |   test('Technical specifications section displays', async ({ page }) => {
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:129:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-e37aa--section-displays-correctly-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-e37aa--section-displays-correctly-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Technical specifications section displays" classname="actual-implementation.spec.ts" time="3.557">
+<failure message="actual-implementation.spec.ts:132:7 Technical specifications section displays" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › actual-implementation.spec.ts:132:7 › Actual Implementation Tests › Technical specifications section displays 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=Next.js 15 + TypeScript') resolved to 2 elements:
+        1) <li class="flex items-center">…</li> aka getByText('Next.js 15 + TypeScript', { exact: true })
+        2) <li>• Next.js 15 + TypeScript</li> aka getByText('• Next.js 15 + TypeScript')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=Next.js 15 + TypeScript')
+
+
+      143 |
+      144 |     const nextjs = page.locator('text=Next.js 15 + TypeScript');
+    > 145 |     await expect(nextjs).toBeVisible();
+          |                          ^
+      146 |
+      147 |     // アクセシビリティ
+      148 |     const accessibility = page.locator('text=アクセシビリティ');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:145:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-f36d8-ifications-section-displays-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-f36d8-ifications-section-displays-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › How to use guide is displayed" classname="actual-implementation.spec.ts" time="3.291">
+<failure message="actual-implementation.spec.ts:155:7 How to use guide is displayed" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › actual-implementation.spec.ts:155:7 › Actual Implementation Tests › How to use guide is displayed 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=使い方') resolved to 2 elements:
+        1) <a href="#about" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-150 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1">📖 使い方</a> aka getByRole('link', { name: '📖 使い方' })
+        2) <h2 class="text-2xl font-bold text-gray-900 mb-6">使い方</h2> aka getByRole('heading', { name: '使い方' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=使い方')
+
+
+      159 |     // 使い方ガイド
+      160 |     const guideTitle = page.locator('text=使い方');
+    > 161 |     await expect(guideTitle).toBeVisible();
+          |                              ^
+      162 |
+      163 |     // ステップの確認
+      164 |     const step1 = page.locator('text=難易度選択');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:161:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-69a40-w-to-use-guide-is-displayed-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › AudioControls component is displayed" classname="actual-implementation.spec.ts" time="2.787">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › All difficulty buttons are clickable" classname="actual-implementation.spec.ts" time="4.047">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Page is accessible via keyboard navigation" classname="actual-implementation.spec.ts" time="4.732">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Responsive layout works on different screen sizes" classname="actual-implementation.spec.ts" time="5.785">
+<failure message="actual-implementation.spec.ts:234:7 Responsive layout works on different screen sizes" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › actual-implementation.spec.ts:234:7 › Actual Implementation Tests › Responsive layout works on different screen sizes 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      241 |
+      242 |     const title = page.locator('h1:has-text("ギターコードクイズ")');
+    > 243 |     await expect(title).toBeVisible();
+          |                         ^
+      244 |
+      245 |     // タブレットサイズ
+      246 |     await page.setViewportSize({ width: 768, height: 1024 });
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:243:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-1854c-s-on-different-screen-sizes-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Settings Page Tests › Settings page loads and displays content" classname="actual-implementation.spec.ts" time="3.383">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Settings Page Tests › Settings page is accessible from home" classname="actual-implementation.spec.ts" time="4.716">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+</testsuite>
+<testsuite name="actual-implementation.spec.ts" timestamp="2025-09-29T04:41:14.294Z" hostname="Mobile Safari" tests="13" failures="11" skipped="0" time="9.73" errors="0">
+<testcase name="Actual Implementation Tests › Home page displays correctly" classname="actual-implementation.spec.ts" time="3.158">
+<failure message="actual-implementation.spec.ts:19:7 Home page displays correctly" type="FAILURE">
+<![CDATA[  [Mobile Safari] › actual-implementation.spec.ts:19:7 › Actual Implementation Tests › Home page displays correctly 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('h1:has-text("ギターコードクイズ")') resolved to 2 elements:
+        1) <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-200">ギターコードクイズ</h1> aka getByRole('banner').getByRole('heading', { name: 'ギターコードクイズ' })
+        2) <h1 class="text-5xl font-bold text-gray-900">ギターコードクイズ</h1> aka getByRole('main').getByRole('heading', { name: 'ギターコードクイズ' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1:has-text("ギターコードクイズ")')
+
+
+      23 |     // メインタイトルの確認
+      24 |     const mainTitle = page.locator('h1:has-text("ギターコードクイズ")');
+    > 25 |     await expect(mainTitle).toBeVisible();
+         |                             ^
+      26 |
+      27 |     // 説明文の確認
+      28 |     const description = page.locator('text=フレットボード上の指板位置からコード名を当てよう！');
+        at C:\development\work\claude-sand\guitar-chord-quiz\tests\e2e\specs\actual-implementation.spec.ts:25:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Safari\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Safari\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Safari\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Safari\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Safari\video.webm]]
+
+[[ATTACHMENT|test-results\actual-implementation-Actu-107ea-ome-page-displays-correctly-Mobile-Safari\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Difficulty selection cards are functional" classname="actual-implementation.spec.ts" time="2.968">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Beginner game starts correctly" classname="actual-implementation.spec.ts" time="3.604">
+<system-err>
+<![CDATA[LocalStorage access denied, skipping clear operation
+]]>
+</system-err>
+</testcase>
+<testcase name="Actual Implementation Tests › Back to menu functionality works" classname="actual-implementation.spec.ts" time="0">
+<failure message="actual-implementation.spec.ts:86:7 Back to menu functionality works" type="FAILURE">
+<![CDATA[  [Mobile Safari] › actual-implementation.spec.ts:86:7 › Actual Implementation Tests › Back to menu functionality works 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Actual Implementation Tests › Features section displays correctly" classname="actual-implementation.spec.ts" time="0">
+<failure message="actual-implementation.spec.ts:110:7 Features section displays correctly" type="FAILURE">
+<![CDATA[  [Mobile Safari] › actual-implementation.spec.ts:110:7 › Actual Implementation Tests › Features section displays correctly 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Actual Implementation Tests › Technical specifications section displays" classname="actual-implementation.spec.ts" time="0">
+<failure message="actual-implementation.spec.ts:132:7 Technical specifications section displays" type="FAILURE">
+<![CDATA[  [Mobile Safari] › actual-implementation.spec.ts:132:7 › Actual Implementation Tests › Technical specifications section displays 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Actual Implementation Tests › How to use guide is displayed" classname="actual-implementation.spec.ts" time="0">
+<failure message="actual-implementation.spec.ts:155:7 How to use guide is displayed" type="FAILURE">
+<![CDATA[  [Mobile Safari] › actual-implementation.spec.ts:155:7 › Actual Implementation Tests › How to use guide is displayed 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Actual Implementation Tests › AudioControls component is displayed" classname="actual-implementation.spec.ts" time="0">
+<failure message="actual-implementation.spec.ts:174:7 AudioControls component is displayed" type="FAILURE">
+<![CDATA[  [Mobile Safari] › actual-implementation.spec.ts:174:7 › Actual Implementation Tests › AudioControls component is displayed 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Actual Implementation Tests › All difficulty buttons are clickable" classname="actual-implementation.spec.ts" time="0">
+<failure message="actual-implementation.spec.ts:193:7 All difficulty buttons are clickable" type="FAILURE">
+<![CDATA[  [Mobile Safari] › actual-implementation.spec.ts:193:7 › Actual Implementation Tests › All difficulty buttons are clickable 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Actual Implementation Tests › Page is accessible via keyboard navigation" classname="actual-implementation.spec.ts" time="0">
+<failure message="actual-implementation.spec.ts:210:7 Page is accessible via keyboard navigation" type="FAILURE">
+<![CDATA[  [Mobile Safari] › actual-implementation.spec.ts:210:7 › Actual Implementation Tests › Page is accessible via keyboard navigation 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Actual Implementation Tests › Responsive layout works on different screen sizes" classname="actual-implementation.spec.ts" time="0">
+<failure message="actual-implementation.spec.ts:234:7 Responsive layout works on different screen sizes" type="FAILURE">
+<![CDATA[  [Mobile Safari] › actual-implementation.spec.ts:234:7 › Actual Implementation Tests › Responsive layout works on different screen sizes 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Settings Page Tests › Settings page loads and displays content" classname="actual-implementation.spec.ts" time="0">
+<failure message="actual-implementation.spec.ts:269:7 Settings page loads and displays content" type="FAILURE">
+<![CDATA[  [Mobile Safari] › actual-implementation.spec.ts:269:7 › Settings Page Tests › Settings page loads and displays content 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Settings Page Tests › Settings page is accessible from home" classname="actual-implementation.spec.ts" time="0">
+<failure message="actual-implementation.spec.ts:282:7 Settings page is accessible from home" type="FAILURE">
+<![CDATA[  [Mobile Safari] › actual-implementation.spec.ts:282:7 › Settings Page Tests › Settings page is accessible from home 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>
